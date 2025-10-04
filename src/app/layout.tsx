@@ -1,16 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Roboto, Noto_Sans_Tamil } from "next/font/google";
+// Tailwind setup + design tokens
+import "@/styles/globals.css";
+// SCSS architecture (7-1 or modules)
+import "@/styles/main.scss";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const roboto = Roboto({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-roboto",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const notoSansTamil = Noto_Sans_Tamil({
   subsets: ["latin"],
-});
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-sans-tamil",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,7 +30,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${roboto.variable} ${notoSansTamil.variable}`}
+        suppressHydrationWarning
       >
         {children}
       </body>
