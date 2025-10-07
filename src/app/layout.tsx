@@ -1,19 +1,18 @@
 import type { Metadata } from "next";
 import { Roboto, Noto_Sans_Tamil } from "next/font/google";
-// Tailwind setup + design tokens
-import "@/styles/globals.css";
-// SCSS architecture (7-1 or modules)
-import "@/styles/main.scss";
+import "@/styles/tailwind/globals.css";
+import "@/styles/scss/main.scss";
+import { MainLayout } from "@/components/layouts";
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
   variable: "--font-roboto",
 });
 
 const notoSansTamil = Noto_Sans_Tamil({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
   variable: "--font-noto-sans-tamil",
 })
 
@@ -33,7 +32,9 @@ export default function RootLayout({
         className={`${roboto.variable} ${notoSansTamil.variable}`}
         suppressHydrationWarning
       >
-        {children}
+        <MainLayout>
+          {children}
+        </MainLayout>
       </body>
     </html>
   );

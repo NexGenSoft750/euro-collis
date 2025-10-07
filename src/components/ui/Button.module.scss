@@ -1,0 +1,38 @@
+/* base */
+.button {
+    @apply font-medium transition-all duration-200 inline-flex items-center justify-center;
+}
+
+/* variants */
+.solid {
+    @apply bg-primary text-white hover:bg-primary/90;
+}
+
+.outline {
+    @apply border-2 border-black text-black shadow-lg-primary;
+}
+
+.ghost {
+    @apply text-primary hover:bg-primary/10;
+}
+
+.link {
+    @apply text-primary underline hover:no-underline;
+}
+
+/* Sizes */
+.sm {
+    @apply px-3 py-1 text-sm;
+}
+
+.md {
+    @apply px-5 py-2 text-base;
+}
+
+.lg {
+    @apply px-8 py-3 text-lg;
+}
+
+.xl {
+    @apply px-10 py-4 text-xl;
+}
