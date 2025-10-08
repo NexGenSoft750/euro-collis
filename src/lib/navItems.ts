@@ -1,6 +1,6 @@
-import { NavItem } from "@/types/navItem";
+import { NavItemLibProps } from "@/types/lib";
 
-export const navItems: NavItem[] = [
+export const navItems: NavItemLibProps[] = [
     {
         id: 1,
         label: "Home",

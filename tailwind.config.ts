@@ -23,6 +23,8 @@ const config: Config = {
             red: "#FF2D1E",
             yellow: "#FCC61A",
             green: "#1AD0A8",
+            grey: "#F3F4F6",
+            "light-grey": "#A6A6A6",
 
             // Semantic actions
             warning: "#FBC02D",

@@ -3,9 +3,9 @@
 import { navItems } from '@/lib/navItems';
 import styles from './Nav.module.scss';
 import Link from "next/link";
-import { NavItem } from '@/types/navItem';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
+import { NavItemLibProps } from '@/types/lib';
 
 const Nav: React.FC = () => {
     const currentPath = usePathname();
@@ -13,7 +13,7 @@ const Nav: React.FC = () => {
     return (
         <nav className={clsx(styles.nav, "flex", "justify-center", "flex-1")}>
             <ul className="flex items-center gap-8">
-                {navItems.map((navItem: NavItem) => (
+                {navItems.map((navItem: NavItemLibProps) => (
                     <li
                         key={navItem.id}
                         className={clsx(
