@@ -1,0 +1,9 @@
+.footer {
+    &__listHeading {
+        @apply mb-5 font-medium font-noto-sans-tamil;
+    }
+
+    &__list {
+        @apply flex flex-col gap-2;
+    }
+}

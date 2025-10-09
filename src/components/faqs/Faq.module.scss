@@ -1,0 +1,13 @@
+.faq {
+    &__questionWrapper {
+        @apply w-full bg-white rounded-xl px-14 py-3 flex justify-between items-center cursor-pointer;
+
+        &--isExpanded {
+            @apply rounded-b-none;
+        }
+    }
+
+    &__answerWrapper {
+        @apply bg-white rounded-b-lg px-14 pt-4 pb-10 border-t-4 border-solid border-yellow;
+    }
+}
