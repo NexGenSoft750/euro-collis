@@ -1,4 +1,5 @@
-import { Faq, Faqs } from "@/components/faqs";
+import { Faq, Faqs } from "@/components/Faqs";
+import { HowItWorks } from "@/components/HowItWorks";
 import { Section } from "@/components/layouts/Section";
 import { TrustSafety } from "@/components/TrustSafety";
 import { WhyEuroCollis } from "@/components/WhyEuroCollis";
@@ -11,6 +12,9 @@ import { NextPage } from "next";
 const Home: NextPage = () => {
   return (
     <>
+      <Section className="pt-12 pb-20">
+        <HowItWorks />
+      </Section>
       <Section className="bg-grey py-14">
         <WhyEuroCollis />
       </Section>
