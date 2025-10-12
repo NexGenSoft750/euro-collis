@@ -6,3 +6,4 @@ export type { IconProps } from './icon';
 export type { TrustPointProps } from './trustPoint';
 export type { EuroCollisBenefitProps } from './euroCollisBenefit';
 export type { whyEuroCollisCardProps } from './whyEuroCollisCard';
+export type { ProcessStepProps } from './processStep';

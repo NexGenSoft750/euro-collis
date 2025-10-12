@@ -1,6 +1,6 @@
 import styles from "@/styles/layouts/Header.module.scss";
 import Nav from "./Nav";
-import { Button } from "@/components/ui";
+import { Button, Logo } from "@/components/ui";
 import HeaderLogo from "./HeaderLogo";
 
 const Header: React.FC = () => {
