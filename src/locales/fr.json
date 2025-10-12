@@ -1,0 +1,13 @@
+{
+  "site": {
+    "title": "Euro Collis",
+    "welcome": "Obtenez un devis de messagerie en quelques minutes"
+  },
+  "nav": {
+    "home": "Accueil",
+    "quote": "Obtenir un devis"
+  },
+  "footer": {
+    "copyright": "© Euro Collis"
+  }
+}
