@@ -23,7 +23,7 @@ const QuoteForm: React.FC = () => {
     { id: 3, title: 'Booking Details', icon: '3' }
   ];
 
-  const [couriers, setCouriers] = useState([
+  const [couriers] = useState([
     {
       id: 1,
       name: "Hicham E.",

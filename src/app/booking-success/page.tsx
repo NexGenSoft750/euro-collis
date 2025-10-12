@@ -1,13 +1,12 @@
 "use client";
 
-import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Button, Icon } from '@/components/ui';
+import React, { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { Icon } from '@/components/ui';
 import styles from './BookingSuccess.module.scss';
 import Link from 'next/link';
 
-const BookingSuccess: React.FC = () => {
-  const router = useRouter();
+const BookingSuccessContent: React.FC = () => {
   const searchParams = useSearchParams();
   
   // Get booking details from URL params (you can enhance this with actual data)
@@ -15,15 +14,6 @@ const BookingSuccess: React.FC = () => {
   const price = searchParams.get('price') || '€170';
   const deliveryDate = searchParams.get('deliveryDate') || '6-8 July';
   const bookingId = searchParams.get('bookingId') || 'EC-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-
-  const handleNewBooking = () => {
-    router.push('/quote');
-  };
-
-  const handleTrackBooking = () => {
-    // In a real app, this would go to a tracking page
-    console.log('Track booking:', bookingId);
-  };
 
   return (
     <div className={styles.successPage}>
@@ -123,6 +113,14 @@ const BookingSuccess: React.FC = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const BookingSuccess: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookingSuccessContent />
+    </Suspense>
   );
 };
 

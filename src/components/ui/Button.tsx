@@ -3,7 +3,7 @@ import clsx from "clsx";
 import styles from "./Button.module.scss";
 import { ButtonProps } from "@/types";
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ({ children, variant = "solid", size = "md", rounded = "md", className = "", ...props }, ref) => {
         const variants = {
             solid: styles.solid,
@@ -46,4 +46,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         );
     });
 
+Button.displayName = "Button";
+
+export { Button };
 export default Button;

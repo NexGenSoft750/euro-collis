@@ -1,6 +1,5 @@
 import React from 'react';
 import QuoteForm from './QuoteForm';
-import QuoteFormHeader from './QuoteFormHeader';
 import styles from './QuoteFormContainer.module.scss';
 
 const QuoteFormContainer: React.FC = () => {
