@@ -1,13 +1,12 @@
 "use client";
 
-import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { Button, Icon } from '@/components/ui';
+import React, { Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { Icon } from '@/components/ui';
 import styles from './BookingSuccess.module.scss';
 import Link from 'next/link';
 
-const BookingSuccess: React.FC = () => {
-  const router = useRouter();
+const BookingSuccessContent: React.FC = () => {
   const searchParams = useSearchParams();
   
   // Get booking details from URL params (you can enhance this with actual data)
@@ -15,15 +14,6 @@ const BookingSuccess: React.FC = () => {
   const price = searchParams.get('price') || '€170';
   const deliveryDate = searchParams.get('deliveryDate') || '6-8 July';
   const bookingId = searchParams.get('bookingId') || 'EC-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-
-  const handleNewBooking = () => {
-    router.push('/quote');
-  };
-
-  const handleTrackBooking = () => {
-    // In a real app, this would go to a tracking page
-    console.log('Track booking:', bookingId);
-  };
 
   return (
     <div className={styles.successPage}>
@@ -40,7 +30,7 @@ const BookingSuccess: React.FC = () => {
           </div>
           <h1 className={styles.successTitle}>Booking Confirmed!</h1>
           <p className={styles.successSubtitle}>
-            Your shipment has been successfully booked and you'll receive a confirmation email shortly.
+            Your shipment has been successfully booked and you&apos;ll receive a confirmation email shortly.
           </p>
         </div>
 
@@ -81,20 +71,20 @@ const BookingSuccess: React.FC = () => {
 
         {/* Next Steps */}
         <div className={styles.nextSteps}>
-          <h3 className={styles.nextStepsTitle}>What's Next?</h3>
+          <h3 className={styles.nextStepsTitle}>What&apos;s Next?</h3>
           <div className={styles.stepsList}>
             <div className={styles.step}>
               <div className={styles.stepNumber}>1</div>
               <div className={styles.stepContent}>
-                <h4>Confirmation Email</h4>
-                <p>You'll receive a detailed confirmation email with all booking information.</p>
+                  <h4>Confirmation Email</h4>
+                  <p>You&apos;ll receive a detailed confirmation email with all booking information.</p>
               </div>
             </div>
             <div className={styles.step}>
               <div className={styles.stepNumber}>2</div>
               <div className={styles.stepContent}>
                 <h4>Courier Contact</h4>
-                <p>Your courier will contact you to arrange pickup details and timing.</p>
+                  <p>Your courier will contact you to arrange pickup details and timing.</p>
               </div>
             </div>
           </div>
@@ -123,6 +113,14 @@ const BookingSuccess: React.FC = () => {
         </div>
       </div>
     </div>
+  );
+};
+
+const BookingSuccess: React.FC = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <BookingSuccessContent />
+    </Suspense>
   );
 };
 

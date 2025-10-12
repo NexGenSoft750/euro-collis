@@ -25,7 +25,19 @@ interface RouteInfoFormProps {
   setCurrentSubStep: (step: number) => void;
 }
 
-const RouteInfoForm = React.forwardRef<HTMLDivElement, RouteInfoFormProps>(({ currentSubStep, setCurrentSubStep }, ref) => {
+interface RouteInfoFormRef {
+  validateForm: () => Promise<boolean>;
+  values: {
+    pickupCountry: string;
+    deliveryCountry: string;
+    pickupCity: string;
+    deliveryCity: string;
+    pickupDate: string;
+    flexibility: string;
+  };
+}
+
+const RouteInfoForm = React.forwardRef<RouteInfoFormRef, RouteInfoFormProps>(({ currentSubStep, setCurrentSubStep }, ref) => {
   const [showPickupDropdown, setShowPickupDropdown] = useState(false);
   const [showDeliveryDropdown, setShowDeliveryDropdown] = useState(false);
 
@@ -54,7 +66,7 @@ const RouteInfoForm = React.forwardRef<HTMLDivElement, RouteInfoFormProps>(({ cu
       return Object.keys(errors).length === 0;
     },
     values: formik.values,
-  } as any));
+  }));
 
   // ✅ Fix: Add missing function for flexibility
   const handleFlexibilityChange = (value: string) => {
@@ -212,7 +224,7 @@ const RouteInfoForm = React.forwardRef<HTMLDivElement, RouteInfoFormProps>(({ cu
             onClick={() => {
               const dateInput = document.getElementById("pickupDateInput") as HTMLInputElement;
               if (dateInput && 'showPicker' in dateInput) {
-                (dateInput as any).showPicker();
+                (dateInput as HTMLInputElement & { showPicker: () => void }).showPicker();
               }
             }}
           >

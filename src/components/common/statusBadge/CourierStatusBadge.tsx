@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./CourierStatusBadge.module.scss";
 import { Icon } from "@/components/ui";
 

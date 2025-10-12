@@ -1,4 +1,4 @@
-import { Faq, Faqs } from '@/components/faqs';
+import { Faq, Faqs } from '@/components/Faqs';
 import { Section } from '@/components/layouts/Section';
 import { QuoteFormContainer } from '@/components/QuoteForm';
 import { faqs } from '@/lib/faqs';

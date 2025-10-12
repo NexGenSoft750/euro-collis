@@ -14,14 +14,32 @@ interface QuoteFormStep1Props {
   onMarkSubStepCompleted: (step: number) => void;
 }
 
+interface RouteInfoRef {
+  validateForm: () => Promise<boolean>;
+  values: {
+    pickupCountry: string;
+    deliveryCountry: string;
+    pickupCity: string;
+    deliveryCity: string;
+    pickupDate: string;
+    flexibility: string;
+  };
+}
+
+interface ItemsDetailRef {
+  validateItems: () => boolean;
+  getSelectedItems: () => { name: string | undefined; quantity: number; }[];
+  formData: { items: { carpet: number; fridge: number; suitcase: number; box: number; largeCarpet: number; }; estimatedWeight: number; };
+}
+
 const QuoteFormStep1: React.FC<QuoteFormStep1Props> = ({
   currentSubStep,
   setCurrentSubStep,
   onNextStep,
   onMarkSubStepCompleted
 }) => {
-  const routeInfoRef = useRef<any>(null);
-  const itemsDetailRef = useRef<any>(null);
+  const routeInfoRef = useRef<RouteInfoRef>(null);
+  const itemsDetailRef = useRef<ItemsDetailRef>(null);
 
   const handleNextStep = async () => {
     // Validate route info before proceeding

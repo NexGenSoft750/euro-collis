@@ -7,7 +7,6 @@ import { TrustSafety } from "@/components/TrustSafety";
 import { WhyEuroCollis } from "@/components/WhyEuroCollis";
 import { WhyEuroCollisWorksBetter } from "@/components/WhyEuroCollisWorksBetter";
 import { faqs } from "@/lib/faqs";
-import styles from "@/styles/pages/Home.module.scss";
 import { FaqLibProps } from "@/types/lib";
 import { NextPage } from "next";
 import Link from "next/link";

@@ -14,7 +14,7 @@ export default function LocaleProvider({
   children: React.ReactNode;
   initialLocale: Locale;
 }) {
-  const [locale, _setLocale] = useState<Locale>(initialLocale);
+  const [locale] = useState<Locale>(initialLocale);
   const [messages, setMessages] = useState<Messages>({});
 
   useEffect(() => {

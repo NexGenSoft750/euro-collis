@@ -7,6 +7,7 @@ import { Icon } from "../ui";
 
 interface ItemsDetailProps {
   // Add any props if needed in the future
+  className?: string;
 }
 
 interface ItemsDetailRef {
