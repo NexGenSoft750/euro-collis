@@ -22,5 +22,4 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
     | "2xl"
     | "3xl"
     ;
-    onClick?: () => void;
 }

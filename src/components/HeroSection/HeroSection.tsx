@@ -1,7 +1,9 @@
+'use client';
+
 import clsx from 'clsx';
 import styles from './HeroSection.module.scss';
 import Image from 'next/image';
-import { Button, RightArrowIcon } from '../ui';
+import { Search, RightArrowIcon } from '@/components/ui';
 
 const HeroSection = () => {
     return (
@@ -14,22 +16,44 @@ const HeroSection = () => {
                         Ship Smarter Between <span className='text-primary'>Europe</span> and <span className='text-red'>Morocco</span>
                     </h1>
                     <p className='text-xl'>Compare courier services, choose the best deal, and send parcels with confidence. Fast, affordable, and fully trackable.</p>
-                    <div className='absolute lg:static top-1/2 z-50 w-2/3 lg:w-full bg-white px-4 py-3 rounded-lg border-2 border-solid border-[#D9D9DB] shadow-lg'>
-                        <div className='flex'>
-                            <div className='flex items-center gap-6 p-4 ps-6 rounded-lg border-2 border-r-0 border-solid border-[#D9D9DB] w-full'>
-                                <div>
-                                    <span className='inline-flex mt-1 text-lg'>Marseille, France </span>
-                                    <div></div>
-                                </div>
+                    <Search.OuterWrapper>
+                        <Search.InnerWrapper>
+                            <div className="flex items-center gap-6 p-4 ps-6 rounded-lg border-2 border-r-0 border-solid border-[#D9D9DB] w-full">
+                                <Search.LocationSelector
+                                    label="Marseille, France"
+                                    locations={[
+                                        "Pakistan",
+                                        "India",
+                                        "United States",
+                                        "United Kingdom",
+                                        "Canada",
+                                        "Australia",
+                                        "Germany",
+                                        "France",
+                                        "Saudi Arabia",
+                                        "United Arab Emirates",
+                                    ]}
+                                />
                                 <RightArrowIcon className="inline-block ms-2" size={25} color="black" />
-                                <div>
-                                    <span className='inline-flex mt-1 text-lg'>Casablanca, Moroco</span>
-                                    <div></div>
-                                </div>
+                                <Search.LocationSelector
+                                    label="Casablanca, Morocco"
+                                    locations={[
+                                        "Pakistan",
+                                        "India",
+                                        "United States",
+                                        "United Kingdom",
+                                        "Canada",
+                                        "Australia",
+                                        "Germany",
+                                        "France",
+                                        "Saudi Arabia",
+                                        "United Arab Emirates",
+                                    ]}
+                                />
                             </div>
-                            <Button className='w-40 !text-lg !font-extrabold'>Search</Button>
-                        </div>
-                    </div>
+                            <Search.Button>Search</Search.Button>
+                        </Search.InnerWrapper>
+                    </Search.OuterWrapper>
                 </div>
                 <div className="w-[30%] relative aspect-[1/1] hidden md:block">
                     <Image
