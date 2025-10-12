@@ -27,7 +27,7 @@ const HeroSection = () => {
                                     <div></div>
                                 </div>
                             </div>
-                            <Button className='w-40 font-bold'>Search</Button>
+                            <Button className='w-40 !text-lg !font-extrabold'>Search</Button>
                         </div>
                     </div>
                 </div>
