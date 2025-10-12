@@ -6,7 +6,7 @@ import { whyEuroCollisCardLibProps } from "@/types/lib";
 const WhyEuroCollis = () => {
     return (
         <div>
-            <h2 className="text-center mb-14">Why Euro Collis?</h2>
+            <h1 className="text-center mb-14">Why Euro Collis?</h1>
             <WhyEuroCollisCards>
                 {
                     whyEuroCollisCards.map((whyEuroCollisCard: whyEuroCollisCardLibProps) => (

@@ -1,0 +1,24 @@
+.heroSection {
+    @apply h-[650px] flex flex-col gap-6 relative;
+
+    &__topBgImage {
+        @apply flex-2 relative;
+
+        &:before {
+            @apply absolute inset-0 content-[''] bg-no-repeat;
+            background-image: url('/images/hero-section/background-image-top.png');
+            background-size: contain;
+            background-position: right;
+        }
+    }
+
+    &__bottomBgImage {
+        @apply flex-1 relative z-10;
+
+        &::before {
+            @apply absolute inset-0 content-[''] bg-no-repeat -z-10;
+            background-image: url('/images/hero-section/background-image-bottom.png');
+            background-size: 100% 100%;
+        }
+    }
+}

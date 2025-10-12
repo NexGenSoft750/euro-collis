@@ -6,7 +6,7 @@ import { ProcessStepLibProps } from "@/types/lib/processStep";
 const HowItWorks = () => {
     return (
         <div>
-            <h2 className="text-center">How it Works</h2>
+            <h1 className="text-center">How it Works</h1>
             <ProcessSteps>
                 {
                     processSteps.map((processStep: ProcessStepLibProps) => (
