@@ -34,3 +34,23 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Internationalization (i18n) - scaffold
+
+This project includes a small, low-risk i18n scaffold to make adding languages easier later.
+
+Files added:
+
+- `src/lib/i18n.ts` - list of supported locales and default.
+- `src/locales/en.json`, `src/locales/fr.json` - example translation files.
+- `src/components/LocaleProvider.tsx` - a lightweight client provider and `useT()` hook.
+
+How to use:
+
+- Wrap your app with `LocaleProvider` (already wired in `src/app/layout.tsx`).
+- In client components, call `const t = useT();` then `t('nav.quote')` to get the translation.
+- Add new locales by creating `src/locales/{locale}.json` and adding the locale to `LOCALES` in `src/lib/i18n.ts`.
+
+Notes:
+
+- This is intentionally minimal — it lazy-loads JSON locale files on the client. For advanced features (server-side translations, formatting, plurals), consider using `next-intl` or `react-i18next` and wire server loading in the App Router.

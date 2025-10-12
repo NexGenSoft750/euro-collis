@@ -1,0 +1,13 @@
+{
+  "site": {
+    "title": "Euro Collis",
+    "welcome": "Get a courier quote in minutes"
+  },
+  "nav": {
+    "home": "Home",
+    "quote": "Get a Quote"
+  },
+  "footer": {
+    "copyright": "© Euro Collis"
+  }
+}

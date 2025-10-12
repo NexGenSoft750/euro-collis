@@ -3,6 +3,8 @@ import { Roboto, Noto_Sans_Tamil } from "next/font/google";
 import "@/styles/tailwind/globals.css";
 import "@/styles/scss/main.scss";
 import { MainLayout } from "@/components/layouts";
+import LocaleProvider from "@/components/LocaleProvider";
+import { DEFAULT_LOCALE } from "@/lib/i18n";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -27,14 +29,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang={DEFAULT_LOCALE}>
       <body
         className={`${roboto.variable} ${notoSansTamil.variable}`}
         suppressHydrationWarning
       >
-        <MainLayout>
-          {children}
-        </MainLayout>
+        <LocaleProvider initialLocale={DEFAULT_LOCALE}>
+          <MainLayout>
+            {children}
+          </MainLayout>
+        </LocaleProvider>
       </body>
     </html>
   );
