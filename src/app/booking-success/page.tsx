@@ -30,7 +30,7 @@ const BookingSuccessContent: React.FC = () => {
           </div>
           <h1 className={styles.successTitle}>Booking Confirmed!</h1>
           <p className={styles.successSubtitle}>
-            Your shipment has been successfully booked and you'll receive a confirmation email shortly.
+            Your shipment has been successfully booked and you&apos;ll receive a confirmation email shortly.
           </p>
         </div>
 
@@ -71,20 +71,20 @@ const BookingSuccessContent: React.FC = () => {
 
         {/* Next Steps */}
         <div className={styles.nextSteps}>
-          <h3 className={styles.nextStepsTitle}>What's Next?</h3>
+          <h3 className={styles.nextStepsTitle}>What&apos;s Next?</h3>
           <div className={styles.stepsList}>
             <div className={styles.step}>
               <div className={styles.stepNumber}>1</div>
               <div className={styles.stepContent}>
-                <h4>Confirmation Email</h4>
-                <p>You'll receive a detailed confirmation email with all booking information.</p>
+                  <h4>Confirmation Email</h4>
+                  <p>You&apos;ll receive a detailed confirmation email with all booking information.</p>
               </div>
             </div>
             <div className={styles.step}>
               <div className={styles.stepNumber}>2</div>
               <div className={styles.stepContent}>
                 <h4>Courier Contact</h4>
-                <p>Your courier will contact you to arrange pickup details and timing.</p>
+                  <p>Your courier will contact you to arrange pickup details and timing.</p>
               </div>
             </div>
           </div>
