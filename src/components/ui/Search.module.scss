@@ -1,0 +1,25 @@
+.outerWrapper {
+    @apply absolute top-1/2 z-50 w-2/3 bg-white px-4 py-3 rounded-lg border-2 border-solid border-[#D9D9DB] shadow-lg;
+    @apply lg:static lg:w-full;
+
+    .locationButton {
+        @apply inline-flex mt-1 text-lg cursor-pointer;
+    }
+
+    .menu {
+        @apply absolute top-12 w-56 bg-white shadow-lg rounded-b-md;
+
+        .menuItem {
+            @apply px-4 py-2 cursor-pointer transition-colors;
+            @apply hover:bg-primary hover:text-white;
+
+            .menuItemActive {
+                @apply bg-primary text-white;
+            }
+        }
+    }
+
+    .searchButton {
+        @apply w-40 !text-lg !font-extrabold;
+    }
+}

@@ -4,13 +4,20 @@ import React, { HTMLAttributes } from "react";
 interface SectionProps extends HTMLAttributes<HTMLElement> {
     children: React.ReactNode;
     className?: string;
+    withXPadding?: boolean;
 }
 
-const Section: React.FC<SectionProps> = ({ children, className = '', ...props }) => {
+const Section: React.FC<SectionProps> = ({ children, className = '', withXPadding = true, ...props }) => {
     return (
-        <section className={clsx("px-6 md:px-16 lg:px-32", className)}
-            {...props}> {children}
-        </section >
+        <section
+            className={clsx(
+                withXPadding && "px-6 md:px-16 lg:px-32",
+                className
+            )}
+            {...props}
+        >
+            {children}
+        </section>
     );
 };
 

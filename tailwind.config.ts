@@ -52,6 +52,9 @@ const config: Config = {
                 heading: ["var(--font-roboto)", "sans-serif"],
                 text: ["var(--font-noto-sans-tamil)", "sans-serif"],
             },
+            flex: {
+                '2': '2 2 0%',
+            },
         },
     },
     plugins: [],

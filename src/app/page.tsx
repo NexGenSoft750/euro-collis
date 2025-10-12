@@ -1,4 +1,7 @@
-import { Faq, Faqs } from "@/components/faqs";
+import { Faq, Faqs } from "@/components/Faqs";
+import { HeroSection } from "@/components/HeroSection";
+import { HowItWorks } from "@/components/HowItWorks";
+import { JoinAsACourier } from "@/components/JoinAsACourier";
 import { Section } from "@/components/layouts/Section";
 import { TrustSafety } from "@/components/TrustSafety";
 import { WhyEuroCollis } from "@/components/WhyEuroCollis";
@@ -13,8 +16,17 @@ import { Button } from "@/components/ui";
 const Home: NextPage = () => {
   return (
     <>
+      <Section className="px-22">
+        <HeroSection />
+      </Section>
+      <Section className="pt-12 pb-20">
+        <HowItWorks />
+      </Section>
       <Section className="bg-grey py-14">
         <WhyEuroCollis />
+      </Section>
+      <Section className="pb-10 md:pb-16" withXPadding={false}>
+        <JoinAsACourier />
       </Section>
       <Section className="bg-grey py-6">
         <WhyEuroCollisWorksBetter />
@@ -37,7 +49,7 @@ const Home: NextPage = () => {
         </div>
       </Section>
       <Section className="bg-grey px-32 py-14">
-        <h2 id="faq-section" className="text-center">Frequently asked questions</h2>
+        <h1 id="faq-section" className="text-center">Frequently asked questions</h1>
         <Faqs aria-labelledby="faq-section">
           {
             faqs.map((faq: FaqLibProps) => (
