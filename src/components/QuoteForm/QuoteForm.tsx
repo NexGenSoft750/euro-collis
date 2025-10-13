@@ -27,7 +27,7 @@ const QuoteForm: React.FC = () => {
     {
       id: 1,
       name: "Hicham E.",
-      avatar: "myphoto.png",
+      avatar: "courier-1.png",
       pickupCities: "Casablanca",
       rating: 1.0,
       reviewCount: 49,
@@ -42,7 +42,7 @@ const QuoteForm: React.FC = () => {
     {
       id: 2,
       name: "Amina D.",
-      avatar: "myphoto.png",
+      avatar: "courier-2.jpg",
       pickupCities: "Rabat",
       rating: 4.8,
       reviewCount: 18,
@@ -57,7 +57,7 @@ const QuoteForm: React.FC = () => {
     {
       id: 3,
       name: "Karim L.",
-      avatar: "myphoto.png",
+      avatar: "courier-3.png",
       pickupCities: "Marrakesh",
       rating: 2.9,
       reviewCount: 11,
