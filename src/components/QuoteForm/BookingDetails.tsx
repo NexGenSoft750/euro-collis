@@ -150,7 +150,7 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({
           <div className={styles.sectionIcon}>
             <Icon
                 src={`/images/common/home-icon.png`}
-                alt={`test Icon`}
+                alt={`home Icon`}
                 width={20}
                 height={20}
             />
