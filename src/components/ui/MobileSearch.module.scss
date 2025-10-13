@@ -1,0 +1,38 @@
+.mobileSearch {
+    @apply flex flex-col gap-4 h-fit p-2 bg-[#EFEFEF] rounded-lg shadow-md w-full max-w-sm mobile-lg:max-w-xl mx-auto;
+
+    .locationDropdown {
+        @apply relative w-full;
+
+        &__label {
+            @apply text-[#686869] text-xs mb-0 block absolute top-2 left-3;
+        }
+
+        &__selector {
+            @apply flex flex-col justify-center bg-white p-3 pt-6 rounded-md cursor-pointer text-black font-medium relative border border-solid border-[#DEDEDE];
+
+            span {
+                @apply font-medium text-base;
+            }
+
+            svg {
+                @apply absolute right-3 top-1/2 -translate-y-1/2;
+            }
+        }
+
+        &__menu {
+            @apply absolute top-full left-0 right-0 bg-white border border-grey rounded-md shadow-lg mt-1 z-10;
+            max-height: 200px;
+            overflow-y: auto;
+
+            li {
+                @apply p-3 cursor-pointer hover:bg-grey;
+            }
+        }
+    }
+
+    &__button {
+        @apply w-full;
+        background-color: #00A6FB;
+    }
+}

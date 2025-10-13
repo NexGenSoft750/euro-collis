@@ -4,7 +4,8 @@
 
 @layer base {
   h1 {
-    @apply text-5xl font-bold leading-tight;
+    @apply text-3xl font-bold leading-tight;
+    @apply md:text-4xl lg:text-3xl;
   }
 
   h2 {
@@ -20,7 +21,8 @@
   }
 
   h5 {
-    @apply text-xl font-medium leading-normal;
+    @apply text-base font-medium leading-normal;
+    @apply md:text-lg lg:text-xl;
   }
 
   h6 {
@@ -33,5 +35,11 @@
 
   p, span, li, a, small {
     font-family: var(--font-noto-sans-tamil);
+  }
+
+  p {
+    @apply text-base;
+    @apply xl:text-lg;
+    @apply 2xl:text-xl;
   }
 }

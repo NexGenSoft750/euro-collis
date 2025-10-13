@@ -15,7 +15,7 @@ const JoinAsACourier: React.FC = () => {
                         height={180}
                         className="object-contain block md:hidden"
                     />
-                    <p className='text-xl text-center md:text-left'>Earn money while traveling! Become a trusted Eurocollis courier and deliver packages between Morocco and Europe.</p>
+                    <p className='text-center md:text-left'>Earn money while traveling! Become a trusted Eurocollis courier and deliver packages between Morocco and Europe.</p>
                     <Button className='!text-lg'>
                         Sign Up as Courier
                     </Button>

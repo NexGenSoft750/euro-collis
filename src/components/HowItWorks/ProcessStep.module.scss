@@ -1,0 +1,48 @@
+// .processStep {
+//     @apply relative;
+
+//     /* Horizontal line for tablet and desktop */
+//     @screen sm {
+//         &::after {
+//             content: '';
+//             @apply absolute bg-grey h-1;
+//             top: 50%;
+//             /* Center vertically within the ProcessStep */
+//             transform: translateY(-50%);
+//             left: calc(50% - 2rem);
+//             /* Start 2rem (32px) to the left of the center, effectively at the gap's left edge */
+//             right: calc(50% - 2rem);
+//             /* End 2rem (32px) to the right of the center, effectively at the gap's right edge */
+//             z-index: -1;
+//         }
+
+//         /* Hide line for the last item in a row on 2-column layout (sm) */
+//         &:nth-child(2n)::after {
+//             content: none;
+//         }
+//     }
+
+//     @screen md {
+//         &:nth-child(2n)::after {
+//             content: '';
+//             /* Re-enable for the second item in a row on 3-column layout */
+//         }
+
+//         /* Hide line for the last item in a row on 3-column layout (md) */
+//         &:nth-child(3n)::after {
+//             content: none;
+//         }
+//     }
+
+//     @screen lg {
+//         &:nth-child(3n)::after {
+//             content: '';
+//             /* Re-enable for the third item in a row on 4-column layout */
+//         }
+
+//         /* Hide line for the last item in a row on 4-column layout (lg) */
+//         &:nth-child(4n)::after {
+//             content: none;
+//         }
+//     }
+// }

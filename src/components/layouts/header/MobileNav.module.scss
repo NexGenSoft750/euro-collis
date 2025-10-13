@@ -1,0 +1,22 @@
+.mobileNav {
+    @apply fixed inset-0 bg-black flex flex-col items-start px-8 py-6;
+    z-index: 100;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+
+    &--open {
+        transform: translateX(0);
+    }
+
+    ul {
+        @apply flex-col items-start w-full mt-8;
+    }
+
+    &__navItem {
+        @apply text-white font-normal text-lg py-2;
+
+        &--is-active {
+            @apply font-semibold border-l-4 border-white pl-2;
+        }
+    }
+}

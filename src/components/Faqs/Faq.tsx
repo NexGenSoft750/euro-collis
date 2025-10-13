@@ -37,7 +37,7 @@ const Faq = ({ question, answer }: FaqProps) => {
                     hidden={!isOpen}
                     className={styles.faq__answerWrapper}
                 >
-                    <p className="text-lg">{answer}</p>
+                    <p>{answer}</p>
                 </div>
             )}
         </div>

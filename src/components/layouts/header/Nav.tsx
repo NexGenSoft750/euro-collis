@@ -11,7 +11,7 @@ const Nav: React.FC = () => {
     const currentPath = usePathname();
 
     return (
-        <nav className={clsx(styles.nav, "flex", "justify-center", "flex-1")}>
+        <nav className={clsx(styles.nav, "flex-1 hidden lg:flex  justify-center")}>
             <ul className="flex items-center gap-8">
                 {navItems.map((navItem: NavItemLibProps) => (
                     <li
