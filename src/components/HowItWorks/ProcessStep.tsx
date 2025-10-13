@@ -1,9 +1,11 @@
 import { ProcessStepProps } from "@/types";
 import { Icon } from "../ui";
+import styles from './ProcessStep.module.scss';
+import clsx from 'clsx';
 
 const ProcessStep = ({ iconSrc, label, description, size }: ProcessStepProps) => {
     return (
-        <div className="flex flex-col justify-center items-center gap-3">
+        <div className={clsx("flex flex-col justify-center items-center gap-3", styles.processStep)}>
             <Icon
                 src={`/images/how-it-works/${iconSrc}`}
                 alt={`${label} Icon`}

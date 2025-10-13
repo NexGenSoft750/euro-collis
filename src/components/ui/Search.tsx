@@ -126,10 +126,7 @@ const LocationSelector = ({
                 aria-expanded={open}
                 aria-haspopup="listbox"
                 aria-label={`Select location: ${selectedItem}`}
-                className={clsx(
-                    styles.locationButton,
-                    "inline-flex items-center mt-1 text-lg cursor-pointer focus:outline-none"
-                )}
+                className={styles.locationButton}
                 onClick={() => setOpen(!open)}
                 onKeyDown={handleButtonKeyDown}
             >
@@ -147,7 +144,7 @@ const LocationSelector = ({
                         onKeyDown={(e) => handleMenuItemKeyDown(e, index)}
                         onMouseEnter={() => handleMouseEnter(index)}
                         className={clsx(
-                            index === focusedIndex && "ring-2 ring-inset ring-blue-500 bg-blue-50"
+                            index === focusedIndex && "ring-2 bg-blue-50"
                         )}
                     >
                         {loc}

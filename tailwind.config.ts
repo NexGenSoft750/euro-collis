@@ -37,7 +37,7 @@ const config: Config = {
                 144: "144px",
             },
             screens: {
-                "mobile-lg": "40rem",
+                "mobile-lg": "29.25rem",
                 tablet: "48rem",
                 laptop: "64rem",
                 desktop: "80rem",

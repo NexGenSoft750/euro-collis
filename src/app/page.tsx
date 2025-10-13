@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <Section className="px-22">
         <HeroSection />
       </Section>
-      <Section className="pt-12 pb-20">
+      <Section className="pt-4 pb-20">
         <HowItWorks />
       </Section>
       <Section className="bg-grey py-14">
