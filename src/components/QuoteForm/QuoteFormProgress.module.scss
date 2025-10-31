@@ -1,1 +1,4 @@
-@import './QuoteForm.module.scss';
+// This file is intentionally empty as styles are defined in QuoteForm.module.scss
+// The component imports styles from QuoteFormProgress.module.scss but uses classes from QuoteForm.module.scss
+// To avoid Sass deprecation warnings, we've removed the @import statement
+// If you need to share styles, import QuoteForm.module.scss directly in the component

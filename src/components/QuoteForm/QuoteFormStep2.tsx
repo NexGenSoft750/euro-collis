@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon } from '@/components/ui';
 import StarRating from '../common/rating/StarRating';
 import CourierStatusBadge from '../common/statusBadge/CourierStatusBadge';
-import styles from './QuoteFormStep2.module.scss';
+import styles from './QuoteForm.module.scss';
 
 interface Courier {
   id: number;

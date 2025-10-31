@@ -13,7 +13,7 @@ interface Courier {
 interface QuoteFormStep3Props {
   selectedCourier: Courier | null;
   onEditSelection: () => void;
-  onConfirmBooking: () => Promise<any>;
+  onConfirmBooking: () => Promise<{ id: string } | null>;
 }
 
 const QuoteFormStep3: React.FC<QuoteFormStep3Props> = ({

@@ -4,12 +4,13 @@ import React, { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { Section } from "@/components/layouts/Section";
 import { PortalBookingDetail } from "@/components/Portal";
+import { Booking } from "@/lib/bookingsStore";
 
 export default function BookingDetailPage() {
   const params = useParams();
   const router = useRouter();
   const id = (params?.id as string) || "";
-  const [booking, setBooking] = useState<any>(null);
+  const [booking, setBooking] = useState<Booking | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -22,8 +23,8 @@ export default function BookingDetailPage() {
         if (!res.ok) throw new Error("Not found");
         const data = await res.json();
         setBooking(data?.booking || null);
-      } catch (e: any) {
-        setError(e?.message || "Unable to load booking");
+      } catch (e: unknown) {
+        setError((e as Error)?.message || "Unable to load booking");
       } finally {
         setLoading(false);
       }
