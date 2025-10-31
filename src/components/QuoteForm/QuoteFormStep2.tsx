@@ -32,6 +32,8 @@ interface QuoteFormStep2Props {
   onSetSortByReviews: (value: boolean) => void;
   onSetSortByDelivery: (value: boolean) => void;
   onSetDeliveryType: (value: string) => void;
+  isLoading?: boolean;
+  errorMessage?: string;
 }
 
 const QuoteFormStep2: React.FC<QuoteFormStep2Props> = ({
@@ -45,7 +47,9 @@ const QuoteFormStep2: React.FC<QuoteFormStep2Props> = ({
   onEditSelection,
   onSetSortByReviews,
   onSetSortByDelivery,
-  onSetDeliveryType
+  onSetDeliveryType,
+  isLoading,
+  errorMessage
 }) => {
   const getFilteredCouriers = () => {
     let filtered = [...couriers];
@@ -163,9 +167,21 @@ const QuoteFormStep2: React.FC<QuoteFormStep2Props> = ({
         </div>
       )}
 
+      {/* Loading / Error / Empty */}
+      {isLoading && (
+        <div className={styles.quoteForm__courierList}>
+          <div className={styles.quoteForm__loading}>Loading quotes…</div>
+        </div>
+      )}
+      {!isLoading && errorMessage && (
+        <div className={styles.quoteForm__courierList}>
+          <div className={styles.quoteForm__error}>{errorMessage}</div>
+        </div>
+      )}
+
       {/* Courier List */}
       <div className={styles.quoteForm__courierList}>
-        {getFilteredCouriers().map((courier) => {
+        {!isLoading && !errorMessage && getFilteredCouriers().map((courier) => {
           const isSelected = courier.id === selectedCourier;
           return (
             <div

@@ -46,6 +46,10 @@
       background-repeat: no-repeat;
       z-index: -1;
     }
+    
+    &:first-child {
+      padding-top: 24px;
+    }
   }
 }
 
@@ -91,6 +95,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 20px;
+  min-height: 50px; // Ensure consistent height across all sections
 
   &__indicator {
     width: 14px;

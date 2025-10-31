@@ -15,6 +15,9 @@ const QuoteForm: React.FC = () => {
   const [sortByDelivery, setSortByDelivery] = useState(false);
   const [deliveryType, setDeliveryType] = useState("All");
   const [selectedCourier, setSelectedCourier] = useState<number | null>(null);
+  const [couriers, setCouriers] = useState<any[]>([]);
+  const [isLoadingQuotes, setIsLoadingQuotes] = useState(false);
+  const [quoteError, setQuoteError] = useState<string | null>(null);
 
   // Steps configuration
   const steps = [
@@ -23,59 +26,37 @@ const QuoteForm: React.FC = () => {
     { id: 3, title: 'Booking Details', icon: '3' }
   ];
 
-  const [couriers] = useState([
-    {
-      id: 1,
-      name: "Hicham E.",
-      avatar: "courier-1.png",
-      pickupCities: "Casablanca",
-      rating: 1.0,
-      reviewCount: 49,
-      trips: "200+",
-      languages: "French & Arabic",
-      status: "verified",
-      statusIcon: "chat",
-      price: 170,
-      deliveryDate: "6-8 July",
-      deliveryType: "Door-to-Door"
-    },
-    {
-      id: 2,
-      name: "Amina D.",
-      avatar: "courier-2.jpg",
-      pickupCities: "Rabat",
-      rating: 4.8,
-      reviewCount: 18,
-      trips: "200+",
-      languages: "French & Arabic",
-      status: "verified",
-      statusIcon: "chat",
-      price: 150,
-      deliveryDate: "10-12 July",
-      deliveryType: "Pickup-Only"
-    },
-    {
-      id: 3,
-      name: "Karim L.",
-      avatar: "courier-3.png",
-      pickupCities: "Marrakesh",
-      rating: 2.9,
-      reviewCount: 11,
-      trips: "100+",
-      languages: "French & Arabic",
-      status: "insured",
-      statusIcon: "umbrella",
-      price: 130,
-      deliveryDate: "8-10 July",
-      deliveryType: "Drop-Off"
-    },
-  ]);
+  // Fetch quotes from mock API when moving to step 2
+  const fetchQuotes = async () => {
+    try {
+      setIsLoadingQuotes(true);
+      setQuoteError(null);
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+      });
+      if (!res.ok) throw new Error('Failed to fetch quotes');
+      const data = await res.json();
+      setCouriers(Array.isArray(data?.couriers) ? data.couriers : []);
+    } catch (e: any) {
+      setQuoteError(e?.message || 'Unable to fetch quotes');
+      setCouriers([]);
+    } finally {
+      setIsLoadingQuotes(false);
+    }
+  };
 
   // Event handlers
   const handleNextStep = () => {
     if (currentStep < 3) {
       setCompletedSteps(prev => [...prev, currentStep]);
-      setCurrentStep(currentStep + 1);
+      const next = currentStep + 1;
+      setCurrentStep(next);
+      if (next === 2) {
+        // Upon entering Choose a Courier, load quotes
+        fetchQuotes();
+      }
     }
   };
 
@@ -102,8 +83,31 @@ const QuoteForm: React.FC = () => {
     setCurrentStep(2);
   };
 
-  const handleConfirmBooking = () => {
-    console.log('Booking confirmed!');
+  const handleConfirmBooking = async () => {
+    try {
+      const courier = couriers.find(c => c.id === selectedCourier) || null;
+      const res = await fetch('/api/book', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user: null,
+          courier,
+          price: courier?.price ?? null,
+          route: {},
+          items: [],
+          contact: {},
+          notes: '',
+        })
+      });
+      
+      if (res.ok) {
+        const data = await res.json();
+        return data.booking; // Return booking so BookingDetails can use the real ID
+      }
+    } catch (e) {
+      // swallow for now; UI handles redirect
+    }
+    return null;
   };
 
   const selectedCourierInfo = couriers.find(c => c.id === selectedCourier);
@@ -134,6 +138,8 @@ const QuoteForm: React.FC = () => {
             onSetSortByReviews={setSortByReviews}
             onSetSortByDelivery={setSortByDelivery}
             onSetDeliveryType={setDeliveryType}
+            isLoading={isLoadingQuotes}
+            errorMessage={quoteError || undefined}
           />
         )}
         {currentStep === 3 && (
