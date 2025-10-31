@@ -23,7 +23,7 @@ export default function BookingList({
   error: string | null;
 }) {
   return (
-    <div>
+    <div style={{ height: '41.4vh' }}>
       <div className={styles.portal__header}>
         <h1 className={styles.portal__title}>Your Bookings</h1>
         <Link href="/quote">
