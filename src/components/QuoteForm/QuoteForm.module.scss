@@ -100,12 +100,13 @@
 
   &__progress {
     display: flex;
-    align-items: center;
+    align-items: flex-start; // Align to top to ensure consistent icon positioning
     padding: 24px 32px;
     background: transparent;
     position: relative;
     overflow: hidden;
     z-index: 1;
+    gap: 16px; // Add gap between steps
 
     &::before {
       content: '';
@@ -134,16 +135,20 @@
 
   &__progressStep {
     display: flex;
+    flex-direction: column;
     align-items: center;
     flex: 1;
     position: relative;
-    justify-content: center;
+    justify-content: flex-start;
     z-index: 1;
+    min-width: 0; // Prevent flex items from overflowing
   }
 
   &__progressIcon {
     width: 32px;
     height: 32px;
+    min-width: 32px; // Ensure consistent width
+    min-height: 32px; // Ensure consistent height
     border-radius: 50%;
     background: #E9ECEF;
     display: flex;
@@ -151,10 +156,12 @@
     justify-content: center;
     font-size: 1rem;
     font-weight: 600;
-    margin-right: 12px;
+    margin-bottom: 8px; // Space between icon and text
+    margin-right: 0; // Remove horizontal margin since we're using flex-direction: column
     transition: all 0.3s ease;
     color: #6C757D;
     position: relative;
+    flex-shrink: 0; // Prevent icon from shrinking
 
     &Active {
       background: #1AD0A8;
@@ -189,11 +196,20 @@
     font-weight: 600;
     color: #6C757D;
     transition: all 0.3s ease;
-    font-size: 1.1rem;
+    font-size: 0.95rem;
+    text-align: center;
+    line-height: 1.4;
+    min-height: 2.8rem; // Ensure consistent height for text to maintain icon alignment
 
     &Active {
       color: #1A1A1A;
       font-weight: 700;
+    }
+    
+    // On mobile, allow wrapping but maintain min-height
+    @media (max-width: 768px) {
+      font-size: 0.85rem;
+      min-height: 2.4rem;
     }
   }
 

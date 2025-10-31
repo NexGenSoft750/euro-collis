@@ -101,6 +101,15 @@ const BookingSuccessContent: React.FC = () => {
             />
             Back to Home
           </Link>
+          <Link href="/portal" className={styles.footerLink}>
+            <Icon
+              src="/images/common/checkmark-icon.png"
+              alt="Portal"
+              width={16}
+              height={16}
+            />
+            View My Bookings
+          </Link>
           <Link href="/quote" className={styles.footerLink}>
             <Icon
               src="/images/common/checkmark-icon.png"

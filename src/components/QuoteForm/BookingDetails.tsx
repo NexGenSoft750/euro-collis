@@ -16,7 +16,7 @@ interface BookingDetailsProps {
     deliveryType: string;
   } | null;
   onEditSelection: () => void;
-  onConfirmBooking: () => void;
+  onConfirmBooking: () => Promise<any>;
 }
 
 const BookingDetails: React.FC<BookingDetailsProps> = ({
@@ -83,7 +83,7 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({
       {/* <div className={styles.progressLine}></div> */}
       
       {/* Customer Info Section */}
-      <div className={styles.section}>
+      <div className={styles.bookingDetails__section}>
         <div className={styles.sectionHeader} onClick={() => {
           setCurrentSubStep(1);
           markSubStepCompleted(1);
@@ -332,16 +332,19 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({
       <ConfirmationModal
         isOpen={showConfirmationModal}
         onClose={() => setShowConfirmationModal(false)}
-        onConfirm={() => {
-          onConfirmBooking();
+        onConfirm={async () => {
           setShowConfirmationModal(false);
+          
+          // Call booking API and get real booking ID
+          const booking = await onConfirmBooking();
+          const bookingId = booking?.id || `EC-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
           
           // Redirect to success page with booking details
           const params = new URLSearchParams({
             courier: selectedCourier?.name || '',
             price: `€${selectedCourier?.price || 0}`,
             deliveryDate: selectedCourier?.deliveryDate || '',
-            bookingId: `EC-${Math.random().toString(36).substr(2, 9).toUpperCase()}`
+            bookingId: bookingId
           });
           
           router.push(`/booking-success?${params.toString()}`);

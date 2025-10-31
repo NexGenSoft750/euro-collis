@@ -1,22 +1,115 @@
 .mobileNav {
-    @apply fixed inset-0 bg-black flex flex-col items-start px-8 py-6;
-    z-index: 100;
+    @apply fixed right-0 top-0 bottom-0 flex flex-col bg-white;
+    z-index: 101;
+    width: 85%;
+    max-width: 360px;
+    border-radius: 16px 0 0 16px; // Rounded left corners
     transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+    overflow-y: auto;
 
     &--open {
         transform: translateX(0);
     }
 
-    ul {
-        @apply flex-col items-start w-full mt-8;
+    &__overlay {
+        @apply fixed inset-0 backdrop-blur-sm;
+        background: rgba(173, 216, 230, 0.5); // Light blue background
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+
+        &--open {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__header {
+        @apply flex items-center justify-between px-6 py-5;
+        border-bottom: 1px solid #E5E7EB;
+        flex-shrink: 0;
+    }
+
+    &__logoWrapper {
+        @apply flex items-center gap-3;
+    }
+
+    &__brandName {
+        @apply text-lg font-bold;
+        color: #111827;
+    }
+
+    &__closeButton {
+        @apply w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300;
+        color: #4B5563;
+        
+        &:hover {
+            background: #F3F4F6;
+        }
+        
+        svg {
+            @apply w-5 h-5;
+        }
+    }
+
+    &__list {
+        @apply flex flex-col w-full py-4;
+        flex: 1;
     }
 
     &__navItem {
-        @apply text-white font-normal text-lg py-2;
-
+        @apply w-full;
+        
         &--is-active {
-            @apply font-semibold border-l-4 border-white pl-2;
+            .mobileNav__link {
+                background: rgba(26, 182, 249, 0.1);
+            }
+        }
+    }
+
+    &__link {
+        @apply flex items-center gap-4 px-6 py-4 w-full transition-all duration-200;
+        text-decoration: none;
+        color: #111827;
+        
+        &:hover {
+            background: #F9FAFB;
+        }
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        color: #1AB6F9; // Primary blue color for icons
+    }
+
+    &__label {
+        @apply flex-1 text-base font-normal;
+        color: #111827;
+    }
+
+    &__chevron {
+        @apply flex-shrink-0;
+        color: #9CA3AF;
+    }
+
+    &__buttonContainer {
+        @apply px-6 py-6;
+        border-top: 1px solid #E5E7EB;
+        flex-shrink: 0;
+    }
+
+    &__button {
+        @apply w-full;
+        background-color: #1AB6F9;
+        color: white;
+        
+        &:hover {
+            background-color: #0EA5E9;
         }
     }
 }

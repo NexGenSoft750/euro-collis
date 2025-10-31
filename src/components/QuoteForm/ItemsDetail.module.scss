@@ -4,7 +4,7 @@
   &__carouselWrapper {
     position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 12px;
     margin-bottom: 24px;
   }
@@ -16,9 +16,24 @@
     scroll-snap-type: x mandatory;
     gap: 16px;
     padding-bottom: 8px;
+    padding-right: 20px; // Show partial next item
     scrollbar-width: none; // hide scrollbar in Firefox
     flex: 1;
     -webkit-overflow-scrolling: touch;
+    position: relative;
+    
+    // Gradient fade on the right to show more content
+    &::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 40px;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.9));
+      pointer-events: none;
+      z-index: 1;
+    }
 
     &::-webkit-scrollbar {
       display: none; // hide scrollbar in Chrome/Safari
@@ -27,11 +42,23 @@
 
   &__carouselBtnGroup {
     display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 42%;
-    width: 105%;
-    left: -20px;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    margin-bottom: 16px;
+    width: 100%;
+    align-items: center;
+    z-index: 11;
+  }
+  
+  @media (min-width: 769px) {
+    &__carouselBtnGroup {
+      position: absolute;
+      top: 42%;
+      width: 105%;
+      left: -20px;
+      justify-content: space-between;
+    }
   }
 
 &__itemCard {
@@ -237,11 +264,15 @@
 @media (max-width: 768px) {
   .quoteForm {
     &__scrollButton {
-        display: none;
+        display: flex;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
 
     &__itemCard {
       flex: 0 0 48%;
+      min-width: 48%;
     }
   }
 }

@@ -4,9 +4,9 @@ import styles from "@/styles/layouts/Header.module.scss";
 import Nav from "./Nav";
 import { Button } from "@/components/ui";
 import HeaderLogo from "./HeaderLogo";
-import Image from "next/image";
 import { useState } from "react";
 import MobileNav from "./MobileNav";
+import Image from "next/image";
 
 const Header: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
