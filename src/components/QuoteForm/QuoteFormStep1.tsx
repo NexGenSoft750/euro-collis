@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import RouteInfoForm from './RouteInfoForm';
 import ItemsDetail from './ItemsDetail';
 import { Button } from '@/components/ui';
-import styles from './QuoteFormStep1.module.scss';
+import styles from './QuoteForm.module.scss';
 import clsx from 'clsx';
 
 interface QuoteFormStep1Props {

@@ -25,8 +25,8 @@ export default function PortalPage() {
         if (!res.ok) throw new Error("Failed to load bookings");
         const data = await res.json();
         setBookings(Array.isArray(data?.bookings) ? data.bookings : []);
-      } catch (e: any) {
-        setError(e?.message || "Unable to load bookings");
+      } catch (e: unknown) {
+        setError((e as Error)?.message || "Unable to load bookings");
       } finally {
         setLoading(false);
       }

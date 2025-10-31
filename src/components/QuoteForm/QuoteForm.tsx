@@ -15,7 +15,22 @@ const QuoteForm: React.FC = () => {
   const [sortByDelivery, setSortByDelivery] = useState(false);
   const [deliveryType, setDeliveryType] = useState("All");
   const [selectedCourier, setSelectedCourier] = useState<number | null>(null);
-  const [couriers, setCouriers] = useState<any[]>([]);
+  const [couriers, setCouriers] = useState<Array<{
+    id: number;
+    name: string;
+    avatar: string;
+    pickupCities: string;
+    rating: number;
+    reviewCount: number;
+    trips: string;
+    languages: string;
+    status: string;
+    statusIcon: string;
+    price: number;
+    deliveryDate: string;
+    deliveryType: string;
+    [key: string]: unknown;
+  }>>([]);
   const [isLoadingQuotes, setIsLoadingQuotes] = useState(false);
   const [quoteError, setQuoteError] = useState<string | null>(null);
 
@@ -39,8 +54,8 @@ const QuoteForm: React.FC = () => {
       if (!res.ok) throw new Error('Failed to fetch quotes');
       const data = await res.json();
       setCouriers(Array.isArray(data?.couriers) ? data.couriers : []);
-    } catch (e: any) {
-      setQuoteError(e?.message || 'Unable to fetch quotes');
+    } catch (e: unknown) {
+      setQuoteError((e as Error)?.message || 'Unable to fetch quotes');
       setCouriers([]);
     } finally {
       setIsLoadingQuotes(false);
@@ -104,7 +119,7 @@ const QuoteForm: React.FC = () => {
         const data = await res.json();
         return data.booking; // Return booking so BookingDetails can use the real ID
       }
-    } catch (e) {
+    } catch {
       // swallow for now; UI handles redirect
     }
     return null;
