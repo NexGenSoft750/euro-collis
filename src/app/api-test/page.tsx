@@ -13,6 +13,7 @@ interface ApiResult {
 export default function ApiTestPage() {
   const [quoteResult, setQuoteResult] = useState<ApiResult | null>(null);
   const [bookingsResult, setBookingsResult] = useState<ApiResult | null>(null);
+
   const [loading, setLoading] = useState(false);
 
   const testQuoteApi = async () => {

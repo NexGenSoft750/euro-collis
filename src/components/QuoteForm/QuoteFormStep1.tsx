@@ -12,6 +12,8 @@ interface QuoteFormStep1Props {
   setCurrentSubStep: (step: number) => void;
   onNextStep: () => void;
   onMarkSubStepCompleted: (step: number) => void;
+  initialPickupCountry?: string;
+  initialDeliveryCountry?: string;
 }
 
 interface RouteInfoRef {
@@ -36,7 +38,9 @@ const QuoteFormStep1: React.FC<QuoteFormStep1Props> = ({
   currentSubStep,
   setCurrentSubStep,
   onNextStep,
-  onMarkSubStepCompleted
+  onMarkSubStepCompleted,
+  initialPickupCountry,
+  initialDeliveryCountry
 }) => {
   const routeInfoRef = useRef<RouteInfoRef>(null);
   const itemsDetailRef = useRef<ItemsDetailRef>(null);
@@ -63,7 +67,13 @@ const QuoteFormStep1: React.FC<QuoteFormStep1Props> = ({
 
   return (
     <div className={styles.quoteForm__step}>
-      <RouteInfoForm ref={routeInfoRef} currentSubStep={currentSubStep} setCurrentSubStep={setCurrentSubStep}/>
+      <RouteInfoForm 
+        ref={routeInfoRef} 
+        currentSubStep={currentSubStep} 
+        setCurrentSubStep={setCurrentSubStep}
+        initialPickupCountry={initialPickupCountry}
+        initialDeliveryCountry={initialDeliveryCountry}
+      />
       <div className={styles.quoteForm__step1}>
         <div className={styles.quoteForm__step1__header} onClick={() => {
           setCurrentSubStep(2);

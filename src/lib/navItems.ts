@@ -15,12 +15,18 @@ export const navItems: NavItemLibProps[] = [
     },
     {
         id: 3,
+        label: "My Bookings",
+        href: "/portal",
+        iconSrc: "/images/common/user-icon.png",
+    },
+    {
+        id: 4,
         label: "About Us",
         href: "/about-us",
         iconSrc: "/images/nav-icons/info-icon.svg",
     },
     {
-        id: 4,
+        id: 5,
         label: "Contact Us",
         href: "/contact-us",
         iconSrc: "/images/nav-icons/contact-icon.svg",
