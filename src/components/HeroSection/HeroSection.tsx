@@ -6,9 +6,14 @@ import Image from 'next/image';
 import { Search, RightArrowIcon } from '@/components/ui';
 import MobileSearch from '@/components/ui/MobileSearch';
 import { useMobile } from '@/hooks';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const HeroSection = () => {
     const [isMobileScreen] = useMobile();
+    const router = useRouter();
+    const [pickupLocation, setPickupLocation] = useState<string>("Marseille, France");
+    const [deliveryLocation, setDeliveryLocation] = useState<string>("Casablanca, Morocco");
 
     return (
         <div className={clsx("flex flex-col relative", styles.heroSection)}>
@@ -36,6 +41,8 @@ const HeroSection = () => {
                                 <div className="flex items-center gap-6 p-2 xl:p-4 ps-3 xl:ps-6 rounded-lg border-2 border-r-0 border-solid border-[#D9D9DB] w-full">
                                     <Search.LocationSelector
                                         label="Marseille, France"
+                                        selectedLocation={pickupLocation}
+                                        onLocationChange={setPickupLocation}
                                         locations={[
                                             "Pakistan",
                                             "India",
@@ -52,6 +59,8 @@ const HeroSection = () => {
                                     <RightArrowIcon className="inline-block ms-2" size={25} color="black" />
                                     <Search.LocationSelector
                                         label="Casablanca, Morocco"
+                                        selectedLocation={deliveryLocation}
+                                        onLocationChange={setDeliveryLocation}
                                         locations={[
                                             "Pakistan",
                                             "India",
@@ -66,7 +75,27 @@ const HeroSection = () => {
                                         ]}
                                     />
                                 </div>
-                                <Search.Button>Search</Search.Button>
+                                <Search.Button onClick={() => {
+                                    // Extract country names from locations (assuming format: "City, Country")
+                                    const extractCountry = (location: string) => {
+                                        // Try to extract country from "City, Country" format
+                                        const parts = location.split(',');
+                                        if (parts.length > 1) {
+                                            return parts[1].trim();
+                                        }
+                                        return location;
+                                    };
+                                    
+                                    const pickupCountry = extractCountry(pickupLocation);
+                                    const deliveryCountry = extractCountry(deliveryLocation);
+                                    
+                                    // Navigate to quote page with countries as URL params
+                                    const params = new URLSearchParams({
+                                        pickupCountry: pickupCountry,
+                                        deliveryCountry: deliveryCountry,
+                                    });
+                                    router.push(`/quote?${params.toString()}`);
+                                }}>Search</Search.Button>
                             </Search.InnerWrapper>
                         </Search.OuterWrapper>
                     )}
@@ -79,7 +108,7 @@ const HeroSection = () => {
                         className="object-contain"
                     />
                 </div>
-                {isMobileScreen && <MobileSearch />}
+                {isMobileScreen && <MobileSearch pickupLocation={pickupLocation} deliveryLocation={deliveryLocation} onPickupChange={setPickupLocation} onDeliveryChange={setDeliveryLocation} />}
             </div>
         </div>
     )

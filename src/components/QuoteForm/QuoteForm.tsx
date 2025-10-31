@@ -7,7 +7,15 @@ import QuoteFormStep1 from './QuoteFormStep1';
 import QuoteFormStep2 from './QuoteFormStep2';
 import QuoteFormStep3 from './QuoteFormStep3';
 
-const QuoteForm: React.FC = () => {
+interface QuoteFormProps {
+  initialPickupCountry?: string;
+  initialDeliveryCountry?: string;
+}
+
+const QuoteForm: React.FC<QuoteFormProps> = ({ 
+  initialPickupCountry, 
+  initialDeliveryCountry 
+}) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [currentSubStep, setCurrentSubStep] = useState(1);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -138,6 +146,8 @@ const QuoteForm: React.FC = () => {
             setCurrentSubStep={setCurrentSubStep}
             onNextStep={handleNextStep}
             onMarkSubStepCompleted={markSubStepCompleted}
+            initialPickupCountry={initialPickupCountry}
+            initialDeliveryCountry={initialDeliveryCountry}
           />
         )}
         {currentStep === 2 && (
