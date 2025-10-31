@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './QuoteFormProgress.module.scss';
+import styles from './QuoteForm.module.scss';
 
 interface QuoteFormProgressProps {
   currentStep: number;

@@ -3,8 +3,9 @@
 import React from 'react';
 import styles from './BookingDetail.module.scss';
 import { Button } from '@/components/ui';
+import { Booking } from '@/lib/bookingsStore';
 
-export default function BookingDetail({ booking, onBack }:{ booking: any; onBack: () => void; }) {
+export default function BookingDetail({ booking, onBack }:{ booking: Booking; onBack: () => void; }) {
   return (
     <div>
       <div className={styles.detail__header}>

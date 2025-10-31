@@ -71,7 +71,7 @@ export async function POST(request: Request) {
     ];
 
     return NextResponse.json({ couriers }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ message: "Failed to fetch quotes" }, { status: 500 });
   }
 }

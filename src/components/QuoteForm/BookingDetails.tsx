@@ -16,7 +16,7 @@ interface BookingDetailsProps {
     deliveryType: string;
   } | null;
   onEditSelection: () => void;
-  onConfirmBooking: () => Promise<any>;
+  onConfirmBooking: () => Promise<{ id: string } | null>;
 }
 
 const BookingDetails: React.FC<BookingDetailsProps> = ({
