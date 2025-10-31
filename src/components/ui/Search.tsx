@@ -90,12 +90,17 @@ MenuItem.displayName = "SearchMenuItem";
 
 const LocationSelector = ({
     label,
-    locations
+    locations,
+    selectedLocation,
+    onLocationChange
 }: {
     label: string;
-    locations: string[]
+    locations: string[];
+    selectedLocation?: string;
+    onLocationChange?: (location: string) => void;
 }) => {
     const [open, setOpen] = useState<boolean>(false);
+    const currentSelected = selectedLocation || label;
 
     const {
         focusedIndex,
@@ -112,9 +117,11 @@ const LocationSelector = ({
         onOpen: () => setOpen(true),
         onClose: () => setOpen(false),
         onSelect: (item) => {
-            console.log('Selected:', item);
+            if (onLocationChange) {
+                onLocationChange(item);
+            }
         },
-        initialSelectedItem: label
+        initialSelectedItem: currentSelected
     });
 
     useOutsideClick(menuRef, () => setOpen(false));
@@ -130,7 +137,7 @@ const LocationSelector = ({
                 onClick={() => setOpen(!open)}
                 onKeyDown={handleButtonKeyDown}
             >
-                {selectedItem}
+                {selectedLocation || selectedItem}
             </button>
             <Menu ref={menuRef} open={open}>
                 {locations.map((loc, index) => (

@@ -23,6 +23,8 @@ const validationSchema = Yup.object({
 interface RouteInfoFormProps {
   currentSubStep: number;
   setCurrentSubStep: (step: number) => void;
+  initialPickupCountry?: string;
+  initialDeliveryCountry?: string;
 }
 
 interface RouteInfoFormRef {
@@ -37,14 +39,19 @@ interface RouteInfoFormRef {
   };
 }
 
-const RouteInfoForm = React.forwardRef<RouteInfoFormRef, RouteInfoFormProps>(({ currentSubStep, setCurrentSubStep }, ref) => {
+const RouteInfoForm = React.forwardRef<RouteInfoFormRef, RouteInfoFormProps>(({ 
+  currentSubStep, 
+  setCurrentSubStep,
+  initialPickupCountry,
+  initialDeliveryCountry
+}, ref) => {
   const [showPickupDropdown, setShowPickupDropdown] = useState(false);
   const [showDeliveryDropdown, setShowDeliveryDropdown] = useState(false);
 
   const formik = useFormik({
     initialValues: {
-      pickupCountry: "Morocco",
-      deliveryCountry: "France",
+      pickupCountry: initialPickupCountry || "Morocco",
+      deliveryCountry: initialDeliveryCountry || "France",
       pickupCity: "",
       deliveryCity: "",
       pickupDate: "",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './MobileSearch.module.scss';
 import { Button } from './Button';
 
@@ -39,9 +40,22 @@ const LocationDropdown: React.FC<LocationDropdownProps> = ({ label, value, onCha
     );
 };
 
-const MobileSearch: React.FC = () => {
-    const [collectFrom, setCollectFrom] = useState("Marseille, France");
-    const [deliveringTo, setDeliveringTo] = useState("Casablanca, Morocco");
+interface MobileSearchProps {
+    pickupLocation?: string;
+    deliveryLocation?: string;
+    onPickupChange?: (location: string) => void;
+    onDeliveryChange?: (location: string) => void;
+}
+
+const MobileSearch: React.FC<MobileSearchProps> = ({
+    pickupLocation: propPickupLocation,
+    deliveryLocation: propDeliveryLocation,
+    onPickupChange,
+    onDeliveryChange
+}) => {
+    const router = useRouter();
+    const [collectFrom, setCollectFrom] = useState(propPickupLocation || "Marseille, France");
+    const [deliveringTo, setDeliveringTo] = useState(propDeliveryLocation || "Casablanca, Morocco");
 
     const locations = [
         "Pakistan",
@@ -57,7 +71,38 @@ const MobileSearch: React.FC = () => {
     ];
 
     const handleGetQuote = () => {
-        console.log("Get Quote clicked!", { collectFrom, deliveringTo });
+        // Extract country names from locations (assuming format: "City, Country")
+        const extractCountry = (location: string) => {
+            const parts = location.split(',');
+            if (parts.length > 1) {
+                return parts[1].trim();
+            }
+            return location;
+        };
+        
+        const pickupCountry = extractCountry(collectFrom);
+        const deliveryCountry = extractCountry(deliveringTo);
+        
+        // Navigate to quote page with countries as URL params
+        const params = new URLSearchParams({
+            pickupCountry: pickupCountry,
+            deliveryCountry: deliveryCountry,
+        });
+        router.push(`/quote?${params.toString()}`);
+    };
+
+    const handlePickupChange = (value: string) => {
+        setCollectFrom(value);
+        if (onPickupChange) {
+            onPickupChange(value);
+        }
+    };
+
+    const handleDeliveryChange = (value: string) => {
+        setDeliveringTo(value);
+        if (onDeliveryChange) {
+            onDeliveryChange(value);
+        }
     };
 
     return (
@@ -65,13 +110,13 @@ const MobileSearch: React.FC = () => {
             <LocationDropdown
                 label="Collect from"
                 value={collectFrom}
-                onChange={setCollectFrom}
+                onChange={handlePickupChange}
                 options={locations}
             />
             <LocationDropdown
                 label="Delivering to"
                 value={deliveringTo}
-                onChange={setDeliveringTo}
+                onChange={handleDeliveryChange}
                 options={locations}
             />
             <Button
