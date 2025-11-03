@@ -6,9 +6,13 @@ import HeaderLogo from "./HeaderLogo";
 import { useState } from "react";
 import MobileNav from "./MobileNav";
 import Image from "next/image";
+import { useAuthContext } from "@/components/AuthProvider"; // Import useAuthContext
+import { useRouter } from "next/navigation"; // Import useRouter
 
 const Header: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+    const { user, logout } = useAuthContext(); // Use auth context
+    const router = useRouter(); // Initialize useRouter
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
@@ -18,14 +22,28 @@ const Header: React.FC = () => {
             <HeaderLogo />
             <Nav />
             <MobileNav isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
-            <Button
-                variant="outline"
-                size="xl"
-                rounded="2xl"
-                className="text-sm font-semibold hidden lg:block"
-            >
-                Login/SignUp
-            </Button>
+            {!user && (
+              <Button
+                  variant="outline"
+                  size="lg"
+                  rounded="xl"
+                  className="text-sm font-semibold hidden lg:block"
+                  onClick={() => router.push('/login')}
+              >
+                  Login/Signup
+              </Button>
+            )}
+            {user && (
+              <Button
+                  variant="outline"
+                  size="lg"
+                  rounded="xl"
+                  className="text-sm font-semibold hidden lg:block ml-2"
+                  onClick={() => router.push('/portal/profile')}
+              >
+                  Profile
+              </Button>
+            )}
             <button onClick={toggleMobileMenu} className="block lg:hidden">
                 <Image
                     src="/images/hamburger.svg"

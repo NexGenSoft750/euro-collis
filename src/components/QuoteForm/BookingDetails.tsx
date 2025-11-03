@@ -16,7 +16,7 @@ interface BookingDetailsProps {
     deliveryType: string;
   } | null;
   onEditSelection: () => void;
-  onConfirmBooking: () => Promise<{ id: string } | null>;
+  onConfirmBooking: (contactData?: any, routeData?: any, itemsData?: any[]) => Promise<{ id: string } | null>;
 }
 
 const BookingDetails: React.FC<BookingDetailsProps> = ({
@@ -335,8 +335,23 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({
         onConfirm={async () => {
           setShowConfirmationModal(false);
           
+          // Prepare contact and route data
+          const contactData = {
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: '', // Add phone field if needed
+          };
+          
+          const routeData = {
+            pickupAddress: formData.pickupAddress,
+            pickupCity: formData.city,
+            pickupCountry: formData.country,
+            deliveryCity: '', // You may need to get this from step 1
+            deliveryCountry: '', // You may need to get this from step 1
+          };
+          
           // Call booking API and get real booking ID
-          const booking = await onConfirmBooking();
+          const booking = await onConfirmBooking(contactData, routeData, []);
           const bookingId = booking?.id || `EC-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
           
           // Redirect to success page with booking details

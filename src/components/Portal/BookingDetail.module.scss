@@ -5,6 +5,9 @@
   &__title {
     @apply text-2xl font-bold text-charcoal;
   }
+  &__subTitle {
+    @apply text-xl font-bold text-charcoal mt-8 mb-4;
+  }
   &__grid {
     @apply grid gap-4 md:grid-cols-2;
   }

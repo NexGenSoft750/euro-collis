@@ -23,7 +23,7 @@ const HeroSection = () => {
                 <div className='w-full mobile-lg:w-[70%] flex flex-col gap-5'>
                     <div className='flex'>
                         <h1 className='text-4xl lg:text-5xl'>
-                            Ship Smarter Between <span className='text-primary'>Europe</span> and <span className='text-red'>Morocco</span>
+                            Your Trusted Partner for <span className='text-primary'>Europe</span> to <span className='text-red'>Morocco</span> Shipping
                         </h1>
                         <div className="w-full relative md:-top-20 aspect-[1/1] block mobile-lg:hidden">
                             <Image
@@ -34,7 +34,7 @@ const HeroSection = () => {
                             />
                         </div>
                     </div>
-                    <p className='text-lg lg:text-xl'>Compare courier services, choose the best deal, and send parcels with confidence. Fast, affordable, and fully trackable.</p>
+                    <p className='text-lg lg:text-xl'>Experience seamless parcel delivery with EuroCollis. Compare couriers, get instant quotes, and track your shipments every step of the way. Reliable, affordable, and stress-free shipping starts here.</p>
                     {!isMobileScreen && (
                         <Search.OuterWrapper>
                             <Search.InnerWrapper>

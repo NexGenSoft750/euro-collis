@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     const bookingId = `EC-${Math.random().toString(36).slice(2, 10).toUpperCase()}`;
     const record: Booking = {
       id: bookingId,
-      user: user || null,
+      user: user || null, // Ensure user from body is assigned
       courier: courier || null,
       price: price ?? null,
       route: route || null,

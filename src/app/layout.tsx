@@ -4,6 +4,7 @@ import "@/styles/tailwind/globals.css";
 import "@/styles/scss/main.scss";
 import { MainLayout } from "@/components/layouts";
 import LocaleProvider from "@/components/LocaleProvider";
+import { AuthProvider } from "@/components/AuthProvider";
 import { DEFAULT_LOCALE } from "@/lib/i18n";
 
 const roboto = Roboto({
@@ -36,9 +37,11 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <LocaleProvider initialLocale={DEFAULT_LOCALE}>
-          <MainLayout>
-            {children}
-          </MainLayout>
+          <AuthProvider>
+            <MainLayout>
+              {children}
+            </MainLayout>
+          </AuthProvider>
         </LocaleProvider>
       </body>
     </html>

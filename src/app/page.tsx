@@ -39,6 +39,7 @@ const Home: NextPage = () => {
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Get instant quotes from verified couriers and book your shipment in minutes. 
             Fast, secure, and fully trackable delivery between Europe and Morocco.
+            Choose EuroCollis for reliable, efficient, and cost-effective shipping solutions tailored to your needs.
           </p>
           <Link href="/quote">
             <Button className="bg-primary text-white px-8 py-4 text-lg font-semibold rounded-lg hover:bg-blue-600 transition-colors">

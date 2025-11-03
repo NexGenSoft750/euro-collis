@@ -1,8 +1,15 @@
 import { NextResponse } from "next/server";
 import { getBookings, addBooking, type Booking } from "@/lib/bookingsStore";
 
-export async function GET() {
-  const bookings = getBookings();
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const userId = searchParams.get('userId');
+  let bookings = getBookings();
+
+  if (userId) {
+    bookings = bookings.filter(booking => booking.user?.id === userId);
+  }
+  
   return NextResponse.json({ bookings }, { status: 200 });
 }
 

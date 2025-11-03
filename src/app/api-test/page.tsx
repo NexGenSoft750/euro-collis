@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Section } from '@/components/layouts/Section';
+import { useAuthContext } from '@/components/AuthProvider';
 
 interface ApiResult {
   success: boolean;
@@ -13,6 +14,7 @@ interface ApiResult {
 export default function ApiTestPage() {
   const [quoteResult, setQuoteResult] = useState<ApiResult | null>(null);
   const [bookingsResult, setBookingsResult] = useState<ApiResult | null>(null);
+  const { user } = useAuthContext();
 
   const [loading, setLoading] = useState(false);
 
@@ -61,7 +63,7 @@ export default function ApiTestPage() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          user: null,
+          user: user?.id,
           courier: { id: 1, name: 'Test Courier' },
           price: 150,
           route: { pickupCountry: 'Morocco', deliveryCountry: 'France' },
@@ -86,6 +88,9 @@ export default function ApiTestPage() {
         <p className="mb-6 text-gray-600">
           This page allows you to test the API endpoints that are available. 
           These endpoints are currently using mock data and will be replaced with MySQL backend in the future.
+        </p>
+        <p className="mb-8 text-gray-500 text-sm italic">
+          Note: This page is for demonstration and testing purposes only and is not part of the main user interface.
         </p>
 
         <div className="space-y-6">

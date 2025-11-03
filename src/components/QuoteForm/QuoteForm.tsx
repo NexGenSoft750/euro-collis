@@ -6,6 +6,8 @@ import QuoteFormProgress from './QuoteFormProgress';
 import QuoteFormStep1 from './QuoteFormStep1';
 import QuoteFormStep2 from './QuoteFormStep2';
 import QuoteFormStep3 from './QuoteFormStep3';
+import { useAuthContext } from '@/components/AuthProvider';
+import { addBookingToStorage } from '@/lib/bookingsLocalStorage';
 
 interface QuoteFormProps {
   initialPickupCountry?: string;
@@ -16,6 +18,7 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
   initialPickupCountry, 
   initialDeliveryCountry 
 }) => {
+  const { user } = useAuthContext();
   const [currentStep, setCurrentStep] = useState(1);
   const [currentSubStep, setCurrentSubStep] = useState(1);
   const [completedSteps, setCompletedSteps] = useState<number[]>([]);
@@ -23,6 +26,8 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
   const [sortByDelivery, setSortByDelivery] = useState(false);
   const [deliveryType, setDeliveryType] = useState("All");
   const [selectedCourier, setSelectedCourier] = useState<number | null>(null);
+  const [routeData, setRouteData] = useState<any>(null);
+  const [itemsData, setItemsData] = useState<any[]>([]);
   const [couriers, setCouriers] = useState<Array<{
     id: number;
     name: string;
@@ -106,26 +111,35 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
     setCurrentStep(2);
   };
 
-  const handleConfirmBooking = async () => {
+  const handleConfirmBooking = async (contactData?: any, routeData?: any, itemsData?: any[]) => {
     try {
       const courier = couriers.find(c => c.id === selectedCourier) || null;
+      const bookingData = {
+        user: user ? { id: user.id, email: user.email, name: user.name } : null,
+        courier,
+        price: courier?.price ?? null,
+        route: routeData || {},
+        items: itemsData || [],
+        contact: contactData || {},
+        notes: '',
+      };
+
       const res = await fetch('/api/book', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          user: null,
-          courier,
-          price: courier?.price ?? null,
-          route: {},
-          items: [],
-          contact: {},
-          notes: '',
-        })
+        body: JSON.stringify(bookingData)
       });
       
       if (res.ok) {
         const data = await res.json();
-        return data.booking; // Return booking so BookingDetails can use the real ID
+        const booking = data.booking;
+        
+        // Save to local storage as well
+        if (booking) {
+          addBookingToStorage(booking);
+        }
+        
+        return booking; // Return booking so BookingDetails can use the real ID
       }
     } catch {
       // swallow for now; UI handles redirect

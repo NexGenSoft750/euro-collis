@@ -87,6 +87,13 @@ const BookingSuccessContent: React.FC = () => {
                   <p>Your courier will contact you to arrange pickup details and timing.</p>
               </div>
             </div>
+            <div className={styles.step}>
+              <div className={styles.stepNumber}>3</div>
+              <div className={styles.stepContent}>
+                <h4>Track Your Shipment</h4>
+                <p>Monitor your parcel's journey in real-time through your EuroCollis portal.</p>
+              </div>
+            </div>
           </div>
         </div>
 
