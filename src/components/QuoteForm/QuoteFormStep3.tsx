@@ -10,10 +10,31 @@ interface Courier {
   deliveryType: string;
 }
 
+interface ContactData {
+  fullName?: string;
+  email?: string;
+  phone?: string;
+}
+
+interface RouteData {
+  pickupAddress?: string;
+  pickupCity?: string;
+  pickupCountry?: string;
+  deliveryCity?: string;
+  deliveryCountry?: string;
+}
+
+interface ItemData {
+  name?: string;
+  quantity?: number;
+  weight?: number;
+  dimensions?: string;
+}
+
 interface QuoteFormStep3Props {
   selectedCourier: Courier | null;
   onEditSelection: () => void;
-  onConfirmBooking: (contactData?: any, routeData?: any, itemsData?: any[]) => Promise<{ id: string } | null>;
+  onConfirmBooking: (contactData?: ContactData, routeData?: RouteData, itemsData?: ItemData[]) => Promise<{ id: string } | null>;
 }
 
 const QuoteFormStep3: React.FC<QuoteFormStep3Props> = ({

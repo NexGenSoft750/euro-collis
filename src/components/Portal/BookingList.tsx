@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import styles from './BookingList.module.scss';
 import Link from 'next/link';
 import { Button } from '@/components/ui';
 
@@ -67,7 +66,7 @@ export default function BookingList({
             </svg>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 mb-2">No bookings yet</h3>
-          <p className="text-gray-600 mb-4">You haven't made any bookings yet.</p>
+          <p className="text-gray-600 mb-4">You haven&apos;t made any bookings yet.</p>
           <Link href="/quote">
             <Button className="bg-primary text-white">Get Your First Quote</Button>
           </Link>

@@ -60,7 +60,7 @@ export default function ForCouriersPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Sign Up</h3>
                 <p className="text-gray-600">
-                  Complete our simple registration process. We'll verify your credentials and courier license.
+                  Complete our simple registration process. We&apos;ll verify your credentials and courier license.
                 </p>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function ForCouriersPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Set Your Rates</h3>
                 <p className="text-gray-600">
-                  Define your service areas, delivery times, and pricing. You're in complete control.
+                  Define your service areas, delivery times, and pricing. You&apos;re in complete control.
                 </p>
               </div>
             </div>
@@ -82,7 +82,7 @@ export default function ForCouriersPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Receive Bookings</h3>
                 <p className="text-gray-600">
-                  When customers request quotes for routes you serve, you'll automatically be included in the comparison.
+                  When customers request quotes for routes you serve, you&apos;ll automatically be included in the comparison.
                 </p>
               </div>
             </div>

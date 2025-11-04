@@ -26,8 +26,6 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
   const [sortByDelivery, setSortByDelivery] = useState(false);
   const [deliveryType, setDeliveryType] = useState("All");
   const [selectedCourier, setSelectedCourier] = useState<number | null>(null);
-  const [routeData, setRouteData] = useState<any>(null);
-  const [itemsData, setItemsData] = useState<any[]>([]);
   const [couriers, setCouriers] = useState<Array<{
     id: number;
     name: string;
@@ -111,7 +109,28 @@ const QuoteForm: React.FC<QuoteFormProps> = ({
     setCurrentStep(2);
   };
 
-  const handleConfirmBooking = async (contactData?: any, routeData?: any, itemsData?: any[]) => {
+  interface ContactData {
+    fullName?: string;
+    email?: string;
+    phone?: string;
+  }
+
+  interface RouteData {
+    pickupAddress?: string;
+    pickupCity?: string;
+    pickupCountry?: string;
+    deliveryCity?: string;
+    deliveryCountry?: string;
+  }
+
+  interface ItemData {
+    name?: string;
+    quantity?: number;
+    weight?: number;
+    dimensions?: string;
+  }
+
+  const handleConfirmBooking = async (contactData?: ContactData, routeData?: RouteData, itemsData?: ItemData[]) => {
     try {
       const courier = couriers.find(c => c.id === selectedCourier) || null;
       const bookingData = {

@@ -6,6 +6,27 @@ import styles from './BookingDetails.module.scss';
 import { Button, Icon, ConfirmationModal } from '@/components/ui';
 import clsx from 'clsx';
 
+interface ContactData {
+  fullName?: string;
+  email?: string;
+  phone?: string;
+}
+
+interface RouteData {
+  pickupAddress?: string;
+  pickupCity?: string;
+  pickupCountry?: string;
+  deliveryCity?: string;
+  deliveryCountry?: string;
+}
+
+interface ItemData {
+  name?: string;
+  quantity?: number;
+  weight?: number;
+  dimensions?: string;
+}
+
 interface BookingDetailsProps {
   selectedCourier: {
     id: number;
@@ -16,7 +37,7 @@ interface BookingDetailsProps {
     deliveryType: string;
   } | null;
   onEditSelection: () => void;
-  onConfirmBooking: (contactData?: any, routeData?: any, itemsData?: any[]) => Promise<{ id: string } | null>;
+  onConfirmBooking: (contactData?: ContactData, routeData?: RouteData, itemsData?: ItemData[]) => Promise<{ id: string } | null>;
 }
 
 const BookingDetails: React.FC<BookingDetailsProps> = ({

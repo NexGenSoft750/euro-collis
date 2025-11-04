@@ -76,6 +76,7 @@ export const useAuth = () => {
     }
 
     // Create user object without password
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _, ...user } = storedUser;
     const token = 'mock-jwt-token-' + Date.now().toString();
     setAuthState({ user, token });
@@ -102,6 +103,7 @@ export const useAuth = () => {
     saveStoredUsers(users);
 
     // Create user object without password
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _, ...user } = newUser;
     const token = 'mock-jwt-token-' + Date.now().toString();
     setAuthState({ user, token });
@@ -121,6 +123,7 @@ export const useAuth = () => {
     saveStoredUsers(users);
 
     // Update auth state
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password: _, ...updatedUser } = users[userIndex];
     setAuthState({ ...authState, user: updatedUser });
     return true;

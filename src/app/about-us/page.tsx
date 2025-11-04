@@ -29,7 +29,7 @@ export default function AboutUsPage() {
               for intermediaries and ensuring you get the best rates.
             </p>
             <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              Founded with a vision to revolutionize European logistics, we've built a comprehensive platform 
+              Founded with a vision to revolutionize European logistics, we&apos;ve built a comprehensive platform 
               that makes it easy to compare courier services, book shipments, and track deliveries—all in one place.
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function AboutUsPage() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Enter Your Shipment Details</h3>
                 <p className="text-gray-600">
-                  Tell us where you're shipping from and to, along with package details. It only takes a minute.
+                  Tell us where you&apos;re shipping from and to, along with package details. It only takes a minute.
                 </p>
               </div>
             </div>

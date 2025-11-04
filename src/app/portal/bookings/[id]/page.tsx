@@ -34,7 +34,7 @@ export default function BookingDetailPage() {
           setBooking(foundBooking);
           setError(null);
         } else {
-          setError("Booking not found or you don't have permission to view it.");
+          setError("Booking not found or you don&apos;t have permission to view it.");
         }
       } catch (e: unknown) {
         setError((e as Error)?.message || "Unable to load booking");

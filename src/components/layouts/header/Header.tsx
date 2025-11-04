@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation"; // Import useRouter
 
 const Header: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-    const { user, logout } = useAuthContext(); // Use auth context
+    const { user } = useAuthContext(); // Use auth context
     const router = useRouter(); // Initialize useRouter
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);

@@ -119,20 +119,23 @@ export default function BookingDetail({ booking, onBack }:{ booking: Booking; on
         <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-8">
           <h2 className="text-xl font-bold text-gray-900 mb-6">Items</h2>
           <div className="space-y-4">
-            {booking.items.map((item: any, index: number) => (
-              <div key={index} className="border border-gray-200 rounded-lg p-4">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <div className="font-semibold text-gray-900">{item.name || `Item ${index + 1}`}</div>
-                    <div className="text-sm text-gray-600 mt-1">
-                      {item.quantity && `Quantity: ${item.quantity}`}
-                      {item.weight && ` • Weight: ${item.weight}kg`}
-                      {item.dimensions && ` • Dimensions: ${item.dimensions}`}
+            {booking.items.map((item, index: number) => {
+              const itemData = item as { name?: string; quantity?: number; weight?: number; dimensions?: string };
+              return (
+                <div key={index} className="border border-gray-200 rounded-lg p-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="font-semibold text-gray-900">{itemData.name || `Item ${index + 1}`}</div>
+                      <div className="text-sm text-gray-600 mt-1">
+                        {itemData.quantity && `Quantity: ${itemData.quantity}`}
+                        {itemData.weight && ` • Weight: ${itemData.weight}kg`}
+                        {itemData.dimensions && ` • Dimensions: ${itemData.dimensions}`}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
