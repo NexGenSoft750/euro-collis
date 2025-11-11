@@ -12,7 +12,8 @@ import {
     FaHome, 
     FaTruck, 
     FaInfoCircle, 
-    FaEnvelope 
+    FaEnvelope,
+    FaBox
 } from "react-icons/fa";
 
 interface MobileNavProps {
@@ -34,6 +35,8 @@ const MobileNav: React.FC<MobileNavProps> = ({ isMobileMenuOpen, setIsMobileMenu
                 return <FaHome className={styles.mobileNav__icon} />;
             case "For Couriers":
                 return <FaTruck className={styles.mobileNav__icon} />;
+            case "My Bookings":
+                return <FaBox className={styles.mobileNav__icon} />;
             case "About Us":
                 return <FaInfoCircle className={styles.mobileNav__icon} />;
             case "Contact Us":
@@ -112,15 +115,16 @@ const MobileNav: React.FC<MobileNavProps> = ({ isMobileMenuOpen, setIsMobileMenu
 
                 {/* Login/SignUp Button */}
                 <div className={styles.mobileNav__buttonContainer}>
-                    <Button
-                        variant="solid"
-                        size="md"
-                        rounded="xl"
-                        className={styles.mobileNav__button}
-                        onClick={handleLinkClick}
-                    >
-                        Login / Sign Up
-                    </Button>
+                    <Link href="/login" onClick={handleLinkClick}>
+                        <Button
+                            variant="solid"
+                            size="md"
+                            rounded="xl"
+                            className={styles.mobileNav__button}
+                        >
+                            Login / Sign Up
+                        </Button>
+                    </Link>
                 </div>
             </nav>
         </>

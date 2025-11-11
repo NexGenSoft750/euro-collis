@@ -7,8 +7,7 @@ const TrustSafety = () => {
     return (
         <div>
             <h1 className="mb-4 text-center sm:text-left">Your Safety, Our Priority</h1>
-            <p className="mb-10 text-lg text-center sm:text-left">Every delivery is backed by verified couriers and platform
-                protections.</p>
+            <p className="mb-10 text-lg text-center sm:text-left">Every delivery is backed by verified transporters and platform protections.</p>
             <TrustPoints>
                 {
                     trustPoints.map((trustPoint: TrustPointLibProps) => (

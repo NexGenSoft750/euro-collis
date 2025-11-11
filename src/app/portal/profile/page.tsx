@@ -5,6 +5,7 @@ import { Section } from '@/components/layouts/Section';
 import { useAuthContext } from '@/components/AuthProvider';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui';
+import { countryNames } from '@/lib/countries';
 
 export default function ProfilePage() {
   const { user, updateUser, logout } = useAuthContext();
@@ -196,15 +197,11 @@ export default function ProfilePage() {
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
                 >
                   <option value="">Select a country</option>
-                  <option value="France">France</option>
-                  <option value="Germany">Germany</option>
-                  <option value="Italy">Italy</option>
-                  <option value="Spain">Spain</option>
-                  <option value="United Kingdom">United Kingdom</option>
-                  <option value="Belgium">Belgium</option>
-                  <option value="Netherlands">Netherlands</option>
-                  <option value="Portugal">Portugal</option>
-                  <option value="Other">Other</option>
+                  {countryNames.map((country) => (
+                    <option key={country} value={country}>
+                      {country}
+                    </option>
+                  ))}
                 </select>
               ) : (
                 <p className="px-4 py-3 bg-gray-50 rounded-lg text-gray-900">

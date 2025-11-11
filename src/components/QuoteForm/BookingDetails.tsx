@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import styles from './BookingDetails.module.scss';
 import { Button, Icon, ConfirmationModal } from '@/components/ui';
 import clsx from 'clsx';
+import { countryNames } from '@/lib/countries';
 
 interface ContactData {
   fullName?: string;
@@ -204,9 +205,11 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({
                 onChange={(e) => handleInputChange('country', e.target.value)}
               >
                 <option value="">Select Country</option>
-                <option value="france">France</option>
-                <option value="spain">Spain</option>
-                <option value="germany">Germany</option>
+                {countryNames.map((country) => (
+                  <option key={country} value={country.toLowerCase()}>
+                    {country}
+                  </option>
+                ))}
               </select>
               <select
                 className={styles.select}

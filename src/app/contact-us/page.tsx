@@ -36,25 +36,26 @@ export default function ContactUsPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section className="bg-gradient-to-r from-primary to-blue-600 text-white py-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
-          <p className="text-xl text-blue-100">
-            We&apos;re here to help! Get in touch with our support team
+      <Section className="py-14 pb-8">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            We&apos;re here to help you with any questions about shipping between Europe and Morocco. 
+            Get in touch with our support team and we&apos;ll get back to you within 24 hours.
           </p>
         </div>
       </Section>
 
       {/* Contact Section */}
-      <Section className="py-16">
+      <Section className="bg-grey py-14">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact Information */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-              <p className="text-gray-600 mb-8">
-                Have a question or need assistance? Our friendly support team is ready to help you. 
-                Reach out through any of the channels below.
+              <p className="text-gray-600 mb-8 text-lg">
+                Have a question or need assistance with your shipments between Europe and Morocco? 
+                Our friendly support team is ready to help you. Reach out through any of the channels below.
               </p>
 
               <div className="space-y-6">
@@ -99,11 +100,11 @@ export default function ContactUsPage() {
                 </div>
               </div>
 
-              <div className="mt-8 p-6 bg-blue-50 rounded-lg">
+              <div className="mt-8 p-6 bg-white rounded-lg border border-gray-200 shadow">
                 <h3 className="font-semibold text-gray-900 mb-2">Response Time</h3>
                 <p className="text-gray-600 text-sm">
                   We typically respond to all inquiries within 24 hours during business days. 
-                  For urgent matters, please call us directly.
+                  For urgent matters related to your shipments between Europe and Morocco, please call us directly.
                 </p>
               </div>
             </div>
@@ -131,6 +132,7 @@ export default function ContactUsPage() {
                     value={formData.name}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                    placeholder="Enter your full name"
                   />
                 </div>
 
@@ -146,6 +148,7 @@ export default function ContactUsPage() {
                     value={formData.email}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
+                    placeholder="you@example.com"
                   />
                 </div>
 
@@ -164,6 +167,7 @@ export default function ContactUsPage() {
                     <option value="">Select a subject</option>
                     <option value="general">General Inquiry</option>
                     <option value="booking">Booking Support</option>
+                    <option value="tracking">Tracking Question</option>
                     <option value="technical">Technical Issue</option>
                     <option value="billing">Billing Question</option>
                     <option value="partnership">Partnership Opportunity</option>
@@ -183,7 +187,7 @@ export default function ContactUsPage() {
                     value={formData.message}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition"
-                    placeholder="Tell us how we can help..."
+                    placeholder="Tell us how we can help with your shipment between Europe and Morocco..."
                   />
                 </div>
 
@@ -202,4 +206,3 @@ export default function ContactUsPage() {
     </>
   );
 }
-

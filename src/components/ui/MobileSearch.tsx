@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './MobileSearch.module.scss';
 import { Button } from './Button';
+import { countryNames } from '@/lib/countries';
 
 interface LocationDropdownProps {
     label: string;
@@ -57,19 +58,6 @@ const MobileSearch: React.FC<MobileSearchProps> = ({
     const [collectFrom, setCollectFrom] = useState(propPickupLocation || "Marseille, France");
     const [deliveringTo, setDeliveringTo] = useState(propDeliveryLocation || "Casablanca, Morocco");
 
-    const locations = [
-        "Pakistan",
-        "India",
-        "United States",
-        "United Kingdom",
-        "Canada",
-        "Australia",
-        "Germany",
-        "France",
-        "Saudi Arabia",
-        "United Arab Emirates",
-    ];
-
     const handleGetQuote = () => {
         // Extract country names from locations (assuming format: "City, Country")
         const extractCountry = (location: string) => {
@@ -111,13 +99,13 @@ const MobileSearch: React.FC<MobileSearchProps> = ({
                 label="Collect from"
                 value={collectFrom}
                 onChange={handlePickupChange}
-                options={locations}
+                options={countryNames}
             />
             <LocationDropdown
                 label="Delivering to"
                 value={deliveringTo}
                 onChange={handleDeliveryChange}
-                options={locations}
+                options={countryNames}
             />
             <Button
                 variant="solid"

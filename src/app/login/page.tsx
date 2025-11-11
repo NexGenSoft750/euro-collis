@@ -104,14 +104,8 @@ export default function LoginPage() {
           <p className="text-center text-sm text-gray-600">
             Don&apos;t have an account?{' '}
             <Link href="/signup" className="font-semibold text-primary hover:text-blue-600 transition">
-              Create one now
+              Create Account
             </Link>
-          </p>
-        </div>
-
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-          <p className="text-xs text-gray-600 text-center">
-            <strong>Demo:</strong> Use any email and password (min 6 characters) to create an account or sign in.
           </p>
         </div>
       </div>

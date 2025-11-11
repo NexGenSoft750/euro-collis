@@ -4,8 +4,8 @@ import { HowItWorks } from "@/components/HowItWorks";
 import { JoinAsACourier } from "@/components/JoinAsACourier";
 import { Section } from "@/components/layouts/Section";
 import { TrustSafety } from "@/components/TrustSafety";
-import { WhyEuroCollis } from "@/components/WhyEuroCollis";
 import { WhyEuroCollisWorksBetter } from "@/components/WhyEuroCollisWorksBetter";
+import { WhereWeOperate } from "@/components/WhereWeOperate";
 import { faqs } from "@/lib/faqs";
 import { FaqLibProps } from "@/types/lib";
 import { NextPage } from "next";
@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <HowItWorks />
       </Section>
       <Section className="bg-grey py-14">
-        <WhyEuroCollis />
+        <WhereWeOperate />
       </Section>
       <Section className="pb-10 md:pb-16" withXPadding={false}>
         <JoinAsACourier />
@@ -35,15 +35,14 @@ const Home: NextPage = () => {
       </Section>
       <Section className="py-16 bg-white">
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Ready to Ship?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Ready to Send Something?</h2>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Get instant quotes from verified couriers and book your shipment in minutes. 
-            Fast, secure, and fully trackable delivery between Europe and Morocco.
-            Choose EuroCollis for reliable, efficient, and cost-effective shipping solutions tailored to your needs.
+            Get instant quotes from trusted transporters and book in just a few clicks.
+            Fast, simple, and safe deliveries between Europe and Morocco.
           </p>
           <Link href="/quote">
             <Button className="bg-primary text-white px-8 py-4 text-lg font-semibold rounded-lg hover:bg-blue-600 transition-colors">
-              Get Your Quote Now
+              Get a Quote
             </Button>
           </Link>
         </div>

@@ -6,7 +6,7 @@ import { EuroCollisBenefitLibProps } from "@/types/lib";
 const WhyEuroCollisWorksBetter = () => {
     return (
         <div>
-            <h3 className="text-center mb-3">Why EuroCoIIis Works Better</h3>
+            <h3 className="text-center mb-3">Why EuroCollis Works Better</h3>
             <p className="text-center mb-6">A smarter, simpler way to send between Morocco and Europe.</p>
             <EuroCollisBenefits>
                 {

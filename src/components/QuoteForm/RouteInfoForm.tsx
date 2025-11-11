@@ -6,13 +6,9 @@ import * as Yup from "yup";
 import styles from "./RouteInfoForm.module.scss";
 import clsx from "clsx";
 
-const countries = [
-  { code: "🇲🇦", name: "Morocco" },
-  { code: "🇫🇷", name: "France" },
-  { code: "🇩🇪", name: "Germany" },
-  { code: "🇪🇸", name: "Spain" },
-  { code: "🇮🇹", name: "Italy" },
-];
+import { countriesWithFlags } from '@/lib/countries';
+
+const countries = countriesWithFlags;
 
 const validationSchema = Yup.object({
   pickupCity: Yup.string().required("Pickup city is required"),

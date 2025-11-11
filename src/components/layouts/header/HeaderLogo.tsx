@@ -1,13 +1,16 @@
 import { Logo } from "@/components/ui";
+import Link from "next/link";
 
 const HeaderLogo: React.FC = () => {
     return (
-        <Logo
-            src="logo.svg"
-            alt="Brand Logo"
-            width={170}
-            height={170}
-        />
+        <Link href="/">
+            <Logo
+                src="logo.svg"
+                alt="Brand Logo"
+                width={170}
+                height={170}
+            />
+        </Link>
     );
 };
 

@@ -3,11 +3,13 @@
 import clsx from 'clsx';
 import styles from './HeroSection.module.scss';
 import Image from 'next/image';
-import { Search, RightArrowIcon } from '@/components/ui';
+import { Search, RightArrowIcon, Button } from '@/components/ui';
 import MobileSearch from '@/components/ui/MobileSearch';
 import { useMobile } from '@/hooks';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { countryNames } from '@/lib/countries';
+import Link from 'next/link';
 
 const HeroSection = () => {
     const [isMobileScreen] = useMobile();
@@ -23,7 +25,8 @@ const HeroSection = () => {
                 <div className='w-full mobile-lg:w-[70%] flex flex-col gap-5'>
                     <div className='flex'>
                         <h1 className='text-4xl lg:text-5xl'>
-                            Your Trusted Partner for <span className='text-primary'>Europe</span> to <span className='text-red'>Morocco</span> Shipping
+                            Salam 👋<br />
+                            Sending something back home?
                         </h1>
                         <div className="w-full relative md:-top-20 aspect-[1/1] block mobile-lg:hidden">
                             <Image
@@ -34,7 +37,19 @@ const HeroSection = () => {
                             />
                         </div>
                     </div>
-                    <p className='text-lg lg:text-xl'>Experience seamless parcel delivery with EuroCollis. Compare couriers, get instant quotes, and track your shipments every step of the way. Reliable, affordable, and stress-free shipping starts here.</p>
+                    <p className='text-lg lg:text-xl'>EuroCollis connects trusted transporters with people who need to send boxes — safely, easily, and for less.</p>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <Link href="/quote">
+                            <Button className="bg-primary text-white px-8 py-4 text-lg font-semibold rounded-lg hover:bg-blue-600 transition-colors">
+                                Get an Instant Quote
+                            </Button>
+                        </Link>
+                        <Link href="/for-couriers">
+                            <Button variant="outline" className="border-2 border-primary text-primary px-8 py-4 text-lg font-semibold rounded-lg hover:bg-primary hover:text-white transition">
+                                Join as a Transporter
+                            </Button>
+                        </Link>
+                    </div>
                     {!isMobileScreen && (
                         <Search.OuterWrapper>
                             <Search.InnerWrapper>
@@ -43,36 +58,14 @@ const HeroSection = () => {
                                         label="Marseille, France"
                                         selectedLocation={pickupLocation}
                                         onLocationChange={setPickupLocation}
-                                        locations={[
-                                            "Pakistan",
-                                            "India",
-                                            "United States",
-                                            "United Kingdom",
-                                            "Canada",
-                                            "Australia",
-                                            "Germany",
-                                            "France",
-                                            "Saudi Arabia",
-                                            "United Arab Emirates",
-                                        ]}
+                                        locations={countryNames}
                                     />
                                     <RightArrowIcon className="inline-block ms-2" size={25} color="black" />
                                     <Search.LocationSelector
                                         label="Casablanca, Morocco"
                                         selectedLocation={deliveryLocation}
                                         onLocationChange={setDeliveryLocation}
-                                        locations={[
-                                            "Pakistan",
-                                            "India",
-                                            "United States",
-                                            "United Kingdom",
-                                            "Canada",
-                                            "Australia",
-                                            "Germany",
-                                            "France",
-                                            "Saudi Arabia",
-                                            "United Arab Emirates",
-                                        ]}
+                                        locations={countryNames}
                                     />
                                 </div>
                                 <Search.Button onClick={() => {
