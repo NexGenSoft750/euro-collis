@@ -18,7 +18,7 @@ const Header: React.FC = () => {
     };
 
     return (
-        <header className="h-20 flex justify-between items-center px-6 md:px-16 xl:gap-10">
+        <header className="sticky top-0 z-50 bg-white shadow-sm lg:static lg:shadow-none h-20 flex justify-between items-center px-6 md:px-16 xl:gap-10">
             <HeaderLogo />
             <Nav />
             <MobileNav isMobileMenuOpen={isMobileMenuOpen} setIsMobileMenuOpen={setIsMobileMenuOpen} />
